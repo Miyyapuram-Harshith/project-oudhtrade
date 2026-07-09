@@ -1,0 +1,615 @@
+{
+  "users": [
+    {
+      "id": "staff-ceo-uuid",
+      "email": "ceo@oudhtrade.com",
+      "role": "ceo",
+      "account_state": "active_verified",
+      "display_name": "Vikram Singh (CEO)",
+      "created_at": "2026-07-09T18:20:12.246Z"
+    },
+    {
+      "id": "staff-ops-uuid",
+      "email": "compliance@oudhtrade.com",
+      "role": "ops_lead",
+      "account_state": "active_verified",
+      "display_name": "Priya Sharma (Grievance Officer)",
+      "created_at": "2026-07-09T18:20:12.247Z"
+    },
+    {
+      "id": "staff-mod-uuid",
+      "email": "moderator@oudhtrade.com",
+      "role": "moderator",
+      "account_state": "active_verified",
+      "display_name": "Amit Patel (T&S Moderator)",
+      "created_at": "2026-07-09T18:20:12.247Z"
+    },
+    {
+      "id": "staff-support-uuid",
+      "email": "support@oudhtrade.com",
+      "role": "support_agent",
+      "account_state": "active_verified",
+      "display_name": "Rajesh Kumar (Support)",
+      "created_at": "2026-07-09T18:20:12.247Z"
+    },
+    {
+      "id": "buyer-uuid-1",
+      "email": "buyer@gmail.com",
+      "role": "buyer",
+      "account_state": "active_verified",
+      "phone": "+919876543210",
+      "phone_verified": true,
+      "id_proof_status": "approved",
+      "trust_badges": [
+        "Verified Buyer"
+      ],
+      "profile": {
+        "display_name": "Aroma Distillers India",
+        "country": "India",
+        "buyer_type": "distillery",
+        "organization_name": "Aroma Distillers Pvt Ltd",
+        "areas_of_interest": [
+          "oud oil",
+          "chips"
+        ]
+      },
+      "created_at": "2026-07-09T18:20:12.247Z"
+    },
+    {
+      "id": "seller-uuid-1",
+      "email": "seller@gmail.com",
+      "role": "seller",
+      "account_state": "active_verified",
+      "phone": "+919988776655",
+      "phone_verified": true,
+      "id_proof_status": "approved",
+      "trust_badges": [
+        "Verified Seller"
+      ],
+      "profile": {
+        "business_name": "Assam Agarwood Traders",
+        "country_region": "India (Assam)",
+        "product_categories": [
+          "chips",
+          "raw wood"
+        ],
+        "seller_description": "Wholesale suppliers of premium grade wild and cultivated Assam Agarwood chips and raw materials since 2012.",
+        "years_in_trade": 14
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "farmer-uuid-1",
+      "email": "farmer@gmail.com",
+      "role": "farmer",
+      "account_state": "active_verified",
+      "phone": "+66812345678",
+      "phone_verified": true,
+      "id_proof_status": "approved",
+      "trust_badges": [
+        "Verified Plantation"
+      ],
+      "profile": {
+        "plantation_name": "Trat Province Organic Aquilaria Farm",
+        "country_region": "Thailand (Trat)",
+        "plantation_location": "Trat Sub-district, Thailand",
+        "plantation_size_approx": "12 Acres",
+        "offerings": [
+          "plants",
+          "harvest"
+        ],
+        "plantation_description": "Eco-friendly sustainable plantation specializing in Aquilaria Crassna cultivation and inoculation services.",
+        "agarwood_species": [
+          "Aquilaria Crassna"
+        ],
+        "years_farming": 8
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "inoc-uuid-1",
+      "email": "inoculator@gmail.com",
+      "role": "inoculation_provider",
+      "account_state": "active_verified",
+      "phone": "+60123456789",
+      "phone_verified": true,
+      "id_proof_status": "approved",
+      "trust_badges": [
+        "Verified Specialist"
+      ],
+      "profile": {
+        "provider_business_name": "Bio-Induce Agarwood Solutions",
+        "country_region": "Malaysia",
+        "service_types": [
+          "service",
+          "material supply"
+        ],
+        "coverage_areas": [
+          "Malaysia",
+          "Thailand",
+          "Indonesia"
+        ],
+        "service_description": "Patent-pending organic inoculation technology yielding high-density resin in Aquilaria trees within 18 months.",
+        "years_of_experience": 12,
+        "inoculation_methods_used": [
+          "Organic Inoculant",
+          "Drill-Press-Infusion"
+        ]
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "nursery-uuid-1",
+      "email": "nursery@gmail.com",
+      "role": "nursery",
+      "account_state": "active_verified",
+      "phone": "+84901234567",
+      "phone_verified": true,
+      "id_proof_status": "approved",
+      "trust_badges": [
+        "Verified Nursery"
+      ],
+      "profile": {
+        "nursery_business_name": "Hanoi Green Aquilaria Nursery",
+        "country_region": "Vietnam (Hanoi)",
+        "nursery_location": "Dong Anh District, Hanoi, Vietnam",
+        "plant_types_offered": [
+          "saplings",
+          "seeds"
+        ],
+        "nursery_description": "Certified growers of high-yield Aquilaria Sinensis and Aquilaria Crassna saplings. Bulk shipping available globally.",
+        "capacity_stock_scale": "50,000 saplings/year",
+        "agarwood_species": [
+          "Aquilaria Sinensis",
+          "Aquilaria Crassna"
+        ],
+        "years_in_operation": 6
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "company-owner-uuid-1",
+      "email": "owner@agarcorp.com",
+      "role": "company",
+      "account_state": "active_verified",
+      "phone": "+6591234567",
+      "phone_verified": true,
+      "id_proof_status": "approved",
+      "trust_badges": [
+        "Verified Company"
+      ],
+      "company_id": "agarcorp-company-uuid",
+      "profile": {
+        "legal_company_name": "AgarCorp International Pte Ltd",
+        "business_registration_number": "201988123K",
+        "registered_country_address": "10 Anson Road, International Plaza, Singapore 079903",
+        "primary_contact_name_role": "Mark Chen (Director)",
+        "work_email": "contact@agarcorp.com",
+        "company_categories": [
+          "products",
+          "services"
+        ],
+        "company_description": "Global conglomerate covering plantations, processing factories, custom inoculation, and finished Oud oil distribution.",
+        "company_phone": "+6567890123"
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "company-mgr-uuid-1",
+      "email": "manager@agarcorp.com",
+      "role": "company",
+      "account_state": "active_verified",
+      "phone": "+6598765432",
+      "phone_verified": true,
+      "company_id": "agarcorp-company-uuid",
+      "profile": {
+        "display_name": "Sarah Lim (Manager)",
+        "primary_contact_name_role": "Sarah Lim (Manager)"
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "company-supp-uuid-1",
+      "email": "support@agarcorp.com",
+      "role": "company",
+      "account_state": "active_verified",
+      "phone": "+6595556666",
+      "phone_verified": true,
+      "company_id": "agarcorp-company-uuid",
+      "profile": {
+        "display_name": "David Tan (Support)",
+        "primary_contact_name_role": "David Tan (Support)"
+      },
+      "created_at": "2026-07-09T18:20:12.248Z"
+    },
+    {
+      "id": "7b11461e-1cb4-4b8f-a9e8-105754f6af53",
+      "email": "test-buyer@gmail.com",
+      "password": "password123",
+      "role": "buyer",
+      "account_state": "active_unverified",
+      "phone": "",
+      "phone_verified": false,
+      "id_proof_status": "unsubmitted",
+      "extra_proof_status": "unsubmitted",
+      "trust_badges": [],
+      "company_id": null,
+      "profile": {},
+      "blocked_users": [],
+      "created_at": "2026-07-09T18:20:27.445Z"
+    },
+    {
+      "id": "1667629d-8604-42c5-ae8d-6e7ce3d59900",
+      "email": "test-seller@gmail.com",
+      "password": "password123",
+      "role": "seller",
+      "account_state": "active_unverified",
+      "phone": "+919999988888",
+      "phone_verified": true,
+      "id_proof_status": "pending",
+      "extra_proof_status": "unsubmitted",
+      "trust_badges": [],
+      "company_id": null,
+      "profile": {},
+      "blocked_users": [
+        "7b11461e-1cb4-4b8f-a9e8-105754f6af53"
+      ],
+      "created_at": "2026-07-09T18:20:27.454Z"
+    },
+    {
+      "id": "87b74fb7-8d4c-4fd8-892f-096e755cd7a5",
+      "email": "new_seller@gmail.com",
+      "password": "password",
+      "role": "seller",
+      "account_state": "active_unverified",
+      "phone": "",
+      "phone_verified": false,
+      "id_proof_status": "unsubmitted",
+      "extra_proof_status": "unsubmitted",
+      "trust_badges": [],
+      "company_id": null,
+      "profile": {
+        "business_name": "Assam Agarwood Traders Ltd",
+        "country_region": "India (Assam)",
+        "years_in_trade": 10,
+        "product_categories": [
+          "chips",
+          "oud oil",
+          "raw wood"
+        ],
+        "seller_description": "We are a premium producer and supplier of high-quality agarwood and oud oil based in Assam."
+      },
+      "blocked_users": [],
+      "created_at": "2026-07-09T18:33:48.342Z"
+    }
+  ],
+  "listings": [
+    {
+      "id": "listing-1",
+      "owner_id": "seller-uuid-1",
+      "owner_type": "user",
+      "listing_type": "product",
+      "title": "Grade A Super Assam Oud Wood Chips",
+      "description": "Harvested from cultivated Aquilaria Malaccensis trees in Sibsagar, Assam. Extremely rich sweet-woody resin content. Ideal for direct heating and incense formulation.",
+      "status": "published",
+      "attributes": {
+        "category": "chips",
+        "species": "Aquilaria Malaccensis",
+        "quantity": "5 kg available",
+        "price_guidance": "$450 / kg"
+      },
+      "views_count": 142,
+      "saves_count": 28,
+      "inquiries_count": 6,
+      "created_at": "2026-06-29T18:20:12.248Z"
+    },
+    {
+      "id": "listing-2",
+      "owner_id": "farmer-uuid-1",
+      "owner_type": "user",
+      "listing_type": "plant",
+      "title": "Sustainable Aquilaria Crassna Plantation Logs",
+      "description": "Fully inoculated Aquilaria Crassna trees ready for harvest. Grown under sustainable farm protocols in Trat, Thailand. Average age: 10 years, inoculated 2 years ago.",
+      "status": "published",
+      "attributes": {
+        "category": "harvest",
+        "species": "Aquilaria Crassna",
+        "quantity": "400 trees",
+        "price_guidance": "Contact for volume pricing"
+      },
+      "views_count": 85,
+      "saves_count": 12,
+      "inquiries_count": 3,
+      "created_at": "2026-07-04T18:20:12.248Z"
+    },
+    {
+      "id": "listing-3",
+      "owner_id": "agarcorp-company-uuid",
+      "owner_type": "company",
+      "listing_type": "product",
+      "title": "Pure Cambodi Organic Oud Oil - Batch 4B",
+      "description": "100% pure hydro-distilled Cambodi Oud Oil. Rich, leather, honey-like drydown with unmatched longevity. Extracted in our GMP-compliant Singapore facility.",
+      "status": "published",
+      "attributes": {
+        "category": "oud oil",
+        "species": "Aquilaria Subintegra",
+        "quantity": "15 Liters in stock",
+        "price_guidance": "$180 per Tola (12ml)"
+      },
+      "views_count": 220,
+      "saves_count": 54,
+      "inquiries_count": 11,
+      "created_at": "2026-06-19T18:20:12.248Z"
+    },
+    {
+      "id": "c72eb0b5-f8e2-4875-be85-bdf3eae89f72",
+      "owner_id": "1667629d-8604-42c5-ae8d-6e7ce3d59900",
+      "owner_type": "user",
+      "listing_type": "product",
+      "title": "Wild-harvested Aquilaria Malaccensis logs",
+      "description": "Premium natural forest logs. No CITES certificate needed under-the-table.",
+      "status": "pending_verification",
+      "attributes": {
+        "quantity": "20 logs",
+        "price_guidance": "negotiable"
+      },
+      "media": [],
+      "views_count": 0,
+      "saves_count": 0,
+      "inquiries_count": 0,
+      "compliance_passed": false,
+      "compliance_flags": [
+        "Contains protected species: Aquilaria Malaccensis.",
+        "Red flag keyword 'wild-harvested' detected: Wild-harvested Agarwood is subject to severe CITES Appendix II export quotas and permits. Natural harvesting is heavily restricted.",
+        "Red flag keyword 'natural forest' detected: Natural forest extraction is generally prohibited or strictly quota-controlled to prevent deforestation.",
+        "Red flag keyword 'no cites' detected: Any international trade of Aquilaria species without a CITES certificate is illegal.",
+        "Red flag keyword 'under-the-table' detected: Informal trade suggestions to bypass statutory trade registration rules."
+      ],
+      "compliance_summary": "COMPLIANCE ALERT: Listing flagged as non-compliant. Potential illegal wildlife trade or CITES violation detected due to keywords indicating wild/unpermitted harvest.",
+      "created_at": "2026-07-09T18:20:27.506Z"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req-1",
+      "owner_id": "buyer-uuid-1",
+      "owner_type": "user",
+      "title": "Urgent: Seeking 500 Liters of Cultivated Oud Oil (Pure)",
+      "description": "Looking for a reliable nursery or distillery company to supply pure hydro-distilled Aquilaria oil for fine perfumery. Must have legal origin and cultivation documentation.",
+      "category": "oud oil",
+      "region": "Global",
+      "status": "active",
+      "created_at": "2026-07-06T18:20:12.248Z"
+    }
+  ],
+  "threads": [
+    {
+      "id": "824da056-5596-4ebd-9a31-22283b96d648",
+      "initiator_id": "87b74fb7-8d4c-4fd8-892f-096e755cd7a5",
+      "receiver_id": "seller-uuid-1",
+      "listing_id": "listing-1",
+      "requirement_id": null,
+      "tag": "service_inquiry",
+      "assigned_to": null,
+      "created_at": "2026-07-09T18:43:00.378Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "f1fbe4a3-c218-4196-a6da-e1286ee4a7c0",
+      "thread_id": "824da056-5596-4ebd-9a31-22283b96d648",
+      "sender_id": "87b74fb7-8d4c-4fd8-892f-096e755cd7a5",
+      "content": ".",
+      "audit_sender_role": null,
+      "created_at": "2026-07-09T18:43:00.378Z"
+    }
+  ],
+  "company_team": [
+    {
+      "id": "team-1",
+      "company_id": "agarcorp-company-uuid",
+      "user_id": "company-owner-uuid-1",
+      "team_role": "owner"
+    },
+    {
+      "id": "team-2",
+      "company_id": "agarcorp-company-uuid",
+      "user_id": "company-mgr-uuid-1",
+      "team_role": "manager"
+    },
+    {
+      "id": "team-3",
+      "company_id": "agarcorp-company-uuid",
+      "user_id": "company-supp-uuid-1",
+      "team_role": "support_agent"
+    }
+  ],
+  "grievances": [
+    {
+      "id": "grievance-1",
+      "reporter_id": "buyer-uuid-1",
+      "reported_user_id": "seller-uuid-1",
+      "reported_listing_id": "listing-1",
+      "complaint_text": "Seller listed products as Assam chips but claims shipping is uncertified. Potential compliance issue.",
+      "status": "acknowledged",
+      "created_at": "2026-07-08T18:20:12.248Z",
+      "acknowledged_at": "2026-07-08T22:20:12.248Z"
+    }
+  ],
+  "data_rights_requests": [],
+  "audit_logs": [
+    {
+      "id": "7374a90a-7860-4c51-ae96-fd72f4e84865",
+      "action": "USER_SIGNUP_INITIATED",
+      "user_id": null,
+      "details": {
+        "email": "test-buyer@gmail.com",
+        "role": "buyer"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:20:27.435Z"
+    },
+    {
+      "id": "4f3b8be8-75cc-486c-801d-b2ccc83ff1c6",
+      "action": "EMAIL_VERIFICATION_SUCCESS",
+      "user_id": "7b11461e-1cb4-4b8f-a9e8-105754f6af53",
+      "details": {
+        "email": "test-buyer@gmail.com",
+        "role": "buyer"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:20:27.445Z"
+    },
+    {
+      "id": "c1fd8ea6-910d-4443-9018-17f10a0ae899",
+      "action": "USER_SIGNUP_INITIATED",
+      "user_id": null,
+      "details": {
+        "email": "test-seller@gmail.com",
+        "role": "seller"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:20:27.452Z"
+    },
+    {
+      "id": "390990e5-73c0-4f2c-b1b2-ec904ba3f080",
+      "action": "EMAIL_VERIFICATION_SUCCESS",
+      "user_id": "1667629d-8604-42c5-ae8d-6e7ce3d59900",
+      "details": {
+        "email": "test-seller@gmail.com",
+        "role": "seller"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:20:27.454Z"
+    },
+    {
+      "id": "58cfd9e9-13b7-474e-be7d-e2a0545466ea",
+      "action": "LISTING_CREATED",
+      "user_id": "1667629d-8604-42c5-ae8d-6e7ce3d59900",
+      "details": {
+        "listingId": "c72eb0b5-f8e2-4875-be85-bdf3eae89f72",
+        "status": "pending_verification",
+        "compliancePassed": false
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:20:27.506Z"
+    },
+    {
+      "id": "bc645e0c-79e3-4ac6-9130-3053e302c694",
+      "action": "USER_SIGNUP_INITIATED",
+      "user_id": null,
+      "details": {
+        "email": "new_seller@gmail.com",
+        "role": "seller"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:33:12.245Z"
+    },
+    {
+      "id": "785bdca9-b56c-420d-bedb-cc5da0eac549",
+      "action": "EMAIL_VERIFICATION_SUCCESS",
+      "user_id": "87b74fb7-8d4c-4fd8-892f-096e755cd7a5",
+      "details": {
+        "email": "new_seller@gmail.com",
+        "role": "seller"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-09T18:33:48.342Z"
+    }
+  ],
+  "companies": [
+    {
+      "id": "company-uuid-stripe-000",
+      "name": "Stripe India Private Limited",
+      "subscription_tier": "enterprise",
+      "created_at": "2026-07-09T16:45:22.378Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-uuid-stripe-frontend",
+      "company_id": "company-uuid-stripe-000",
+      "title": "Senior Full Stack Engineer (React/Node)",
+      "eligibility_criteria": "Min 4 years experience, React expertise, Node backend scalability systems.",
+      "is_active": true,
+      "created_at": "2026-07-09T16:45:22.378Z"
+    },
+    {
+      "id": "job-uuid-stripe-backend",
+      "company_id": "company-uuid-stripe-000",
+      "title": "Staff System Architect (PostgreSQL/AWS/Django)",
+      "eligibility_criteria": "Architecting large database clusters, high scaling, distributed networks.",
+      "is_active": true,
+      "created_at": "2026-07-09T16:45:22.378Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "acb93a50-f239-4481-b1ad-bb5f02edf97c",
+      "job_id": "job-uuid-stripe-frontend",
+      "candidate_id": "cand-uuid-5555-5555-555555555555",
+      "resume_url": "https://mettl-assets.s3.amazonaws.com/resumes/candidate_resume.pdf",
+      "profile_details": {
+        "gpa": "3.9",
+        "college": "MIT"
+      },
+      "status": "evaluation_pending",
+      "created_at": "2026-07-09T16:46:09.950Z"
+    }
+  ],
+  "interview_results": [
+    {
+      "id": "fd3f83f9-2615-46a2-a8a6-bd0995e94a8e",
+      "application_id": "acb93a50-f239-4481-b1ad-bb5f02edf97c",
+      "overall_score": 71.5,
+      "cognitive_score": 90.91,
+      "communication_score": 48.5,
+      "technical_score": 82.84,
+      "mongodb_report_id": "9c109654-727f-4f1c-9695-f6b75cce914e",
+      "created_at": "2026-07-09T16:46:09.997Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "b90f69ab-1936-42f4-95ff-6ddd99fd7210",
+      "company_id": "company-uuid-stripe-000",
+      "razorpay_order_id": "order_cc5bd2e4a5c04e",
+      "amount": 19999,
+      "status": "paid",
+      "created_at": "2026-07-09T16:46:10.005Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-1",
+      "title": "React Web & Design System Architecture",
+      "description": "Learn component design, accessibility rules, performance, and dark/light themes.",
+      "duration": "12 Hours",
+      "lessons": [
+        {
+          "title": "Introduction to Stripe & Linear UI Style",
+          "type": "video",
+          "url": "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-computer-34285-large.mp4"
+        },
+        {
+          "title": "Faceted Search & Context APIs",
+          "type": "pdf",
+          "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        }
+      ]
+    },
+    {
+      "id": "course-2",
+      "title": "Enterprise Backend Engineering in Node.js",
+      "description": "Master multi-node DB scaling, JWT rotations, secure auth and OWASP controls.",
+      "duration": "18 Hours",
+      "lessons": [
+        {
+          "title": "Scale Node Server to 10k Concurrent Connections",
+          "type": "video",
+          "url": "https://assets.mixkit.co/videos/preview/mixkit-web-development-screens-close-up-42291-large.mp4"
+        }
+      ]
+    }
+  ]
+}
