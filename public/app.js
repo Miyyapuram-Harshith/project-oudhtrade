@@ -10,7 +10,7 @@ const state = {
   loginPassword: '',
   loginRole: 'buyer',
   signupWarningChecked: false,
-  
+
   // Dashboard & Marketplace state
   listings: [],
   requirements: [],
@@ -21,22 +21,22 @@ const state = {
   searchKeyword: '',
   searchSpecies: '',
   searchType: 'listings', // 'listings', 'requirements'
-  
+
   // Messaging state
   threads: [],
   activeThreadId: null,
-  
+
   // Internal Staff state
   moderationUsers: [],
   moderationListings: [],
   grievances: [],
   analyticsOverview: null,
   activeStaffTab: 'moderation-users', // 'moderation-users', 'moderation-listings', 'grievances', 'dpo', 'analytics'
-  
+
   // Company team member switcher state (for multi-user testing in our mockup)
   companyTeam: [],
   activeCompanyMemberId: null,
-  
+
   theme: localStorage.getItem('theme') || 'dark'
 };
 
@@ -96,7 +96,7 @@ async function apiCall(endpoint, options = {}) {
 function navigate(view) {
   state.currentView = view;
   render();
-  
+
   // Trigger data fetches corresponding to views
   if (view === 'marketplace') {
     fetchMarketplaceData();
@@ -117,7 +117,7 @@ async function checkAuthSession() {
       state.user = data.user;
       state.companyTeam = data.companyTeam || [];
       state.activeCompanyMemberId = data.user.id;
-      
+
       // If user profile displayName/businessName is blank, force Onboarding setup
       if (isProfileEmpty(data.user)) {
         state.currentView = 'onboarding';
@@ -305,7 +305,7 @@ function bindAuthEvents() {
           state.authMode = 'otp';
           showToast(res.message);
           render();
-        } catch (e) {}
+        } catch (e) { }
       } else {
         // Login Flow
         try {
@@ -317,14 +317,14 @@ function bindAuthEvents() {
           state.token = res.token;
           state.user = res.user;
           state.activeCompanyMemberId = res.user.id;
-          
+
           showToast(res.message);
           if (isProfileEmpty(res.user)) {
             navigate('onboarding');
           } else {
             navigate('marketplace');
           }
-        } catch (e) {}
+        } catch (e) { }
       }
     });
   }
@@ -345,7 +345,7 @@ function bindAuthEvents() {
         state.activeCompanyMemberId = res.user.id;
         showToast(res.message);
         navigate('onboarding');
-      } catch (e) {}
+      } catch (e) { }
     });
   }
 }
@@ -570,7 +570,7 @@ function bindOnboardingEvents() {
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const role = state.user.role;
       let profile = {};
 
@@ -640,7 +640,7 @@ function bindOnboardingEvents() {
         state.user = res.user;
         showToast(res.message);
         navigate('marketplace');
-      } catch (e) {}
+      } catch (e) { }
     });
   }
 }
@@ -723,7 +723,7 @@ function renderHeader() {
     <header class="main-header">
       <h1 style="font-family:var(--font-display); font-size:1.35rem; font-weight:600; text-transform:capitalize;">${state.currentView === 'chat' ? 'Conversation Inbox' : state.currentView + ' Panel'}</h1>
       <div style="display:flex; align-items:center; gap:16px;">
-        <span style="font-size:0.85rem; color:var(--secondary);">CITES Certified Agarwood Registry</span>
+        <span style="font-size:0.85rem; color:var(--secondary);">Agarwood Registry</span>
       </div>
     </header>
   `;
@@ -747,7 +747,7 @@ function renderContentView() {
 // 4. MARKETPLACE DIRECTORY HUB (symmetric search & post contact)
 function renderMarketplaceView() {
   const isListings = state.searchType === 'listings';
-  
+
   return `
     <div>
       <div class="custom-alert alert-info">
@@ -813,7 +813,7 @@ async function fetchMarketplaceData() {
     if (state.searchType === 'listings') {
       const data = await apiCall(`/api/v1/listings?${params.toString()}`);
       state.listings = data;
-      
+
       if (data.length === 0) {
         container.innerHTML = `<p style="color:var(--secondary); text-align:center; padding:40px;">No supply listings found matching criteria.</p>`;
         return;
@@ -877,7 +877,7 @@ async function fetchMarketplaceData() {
         `;
       }).join('');
     }
-  } catch (e) {}
+  } catch (e) { }
 }
 
 window.applyMarketplaceSearch = () => {
@@ -901,7 +901,7 @@ window.initiateContact = (receiverId, listingId, requirementId, tag) => {
     navigate('auth');
     return;
   }
-  
+
   if (state.user.id === receiverId || state.user.company_id === receiverId) {
     showToast('Rules lock: You cannot message yourself.', true);
     return;
@@ -949,7 +949,7 @@ window.initiateContact = (receiverId, listingId, requirementId, tag) => {
       showToast('Conversation initialized. Check your inbox.');
       document.getElementById('contact-modal').remove();
       navigate('chat');
-    } catch (e) {}
+    } catch (e) { }
   });
 };
 
@@ -1040,7 +1040,7 @@ async function fetchDashboardData() {
         window.switchDbTab('listings');
       }
     }
-    
+
     const reqs = await apiCall('/api/v1/requirements/my-requirements');
     state.myRequirements = reqs;
     const reqsCountEl = document.getElementById('my-reqs-count');
@@ -1048,7 +1048,7 @@ async function fetchDashboardData() {
     if (initialTab === 'reqs') {
       window.switchDbTab('reqs');
     }
-  } catch (e) {}
+  } catch (e) { }
 }
 
 // Sub-Tab 1: Listings manager
@@ -1073,17 +1073,17 @@ function renderMyListingsSection(container) {
         </thead>
         <tbody>
           ${state.myListings.map(l => {
-            const auditBadge = l.compliance_passed 
-              ? `<span class="trust-badge badge-green">Passed</span>` 
-              : `<span class="trust-badge badge-grey" style="background-color:rgba(166,63,63,0.1); border-color:var(--accent-crimson); color:var(--accent-crimson);" title="${l.compliance_summary}">Flagged (CITES)</span>`;
-            
-            const statusBadge = l.status === 'published'
-              ? `<span class="trust-badge badge-green">Live</span>`
-              : l.status === 'pending_verification'
-              ? `<span class="trust-badge badge-grey" style="color:var(--accent-gold); border-color:var(--accent-gold);">Pending Verify</span>`
-              : `<span class="trust-badge badge-grey">Draft</span>`;
+    const auditBadge = l.compliance_passed
+      ? `<span class="trust-badge badge-green">Passed</span>`
+      : `<span class="trust-badge badge-grey" style="background-color:rgba(166,63,63,0.1); border-color:var(--accent-crimson); color:var(--accent-crimson);" title="${l.compliance_summary}">Flagged (CITES)</span>`;
 
-            return `
+    const statusBadge = l.status === 'published'
+      ? `<span class="trust-badge badge-green">Live</span>`
+      : l.status === 'pending_verification'
+        ? `<span class="trust-badge badge-grey" style="color:var(--accent-gold); border-color:var(--accent-gold);">Pending Verify</span>`
+        : `<span class="trust-badge badge-grey">Draft</span>`;
+
+    return `
               <tr>
                 <td><strong>${l.title}</strong></td>
                 <td><span class="role-tag" style="background-color:rgba(255,255,255,0.05); text-transform:uppercase; font-size:0.75rem; padding:2px 6px;">${l.listing_type}</span></td>
@@ -1098,7 +1098,7 @@ function renderMyListingsSection(container) {
                 </td>
               </tr>
             `;
-          }).join('')}
+  }).join('')}
           ${state.myListings.length === 0 ? '<tr><td colspan="6" style="text-align:center; color:var(--secondary);">No listings created yet. Click Add Supply Listing.</td></tr>' : ''}
         </tbody>
       </table>
@@ -1109,7 +1109,7 @@ function renderMyListingsSection(container) {
 window.openCreateListingModal = () => {
   const role = state.user.role;
   let typeOptions = '';
-  
+
   if (role === 'seller' || role === 'company') {
     typeOptions = `<option value="product">Product (Oud oil, chips, logs)</option>`;
   } else if (role === 'farmer') {
@@ -1198,7 +1198,7 @@ window.openCreateListingModal = () => {
       showToast(res.message);
       document.getElementById('create-listing-modal').remove();
       fetchDashboardData();
-    } catch (e) {}
+    } catch (e) { }
   });
 };
 
@@ -1210,7 +1210,7 @@ window.toggleListingStatus = async (id, newStatus) => {
     });
     showToast(res.message);
     fetchDashboardData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.deleteListing = async (id) => {
@@ -1221,7 +1221,7 @@ window.deleteListing = async (id) => {
     });
     showToast(res.message);
     fetchDashboardData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 // Sub-Tab 2: Requirements (RFQs)
@@ -1246,11 +1246,11 @@ function renderMyRequirementsSection(container) {
         </thead>
         <tbody>
           ${state.myRequirements.map(r => {
-            const statusBadge = r.status === 'active'
-              ? `<span class="trust-badge badge-green">Active</span>`
-              : `<span class="trust-badge badge-grey">Closed</span>`;
+    const statusBadge = r.status === 'active'
+      ? `<span class="trust-badge badge-green">Active</span>`
+      : `<span class="trust-badge badge-grey">Closed</span>`;
 
-            return `
+    return `
               <tr>
                 <td><strong>${r.title}</strong></td>
                 <td>${r.category}</td>
@@ -1258,14 +1258,14 @@ function renderMyRequirementsSection(container) {
                 <td>${statusBadge}</td>
                 <td><small>${new Date(r.created_at).toLocaleDateString()}</small></td>
                 <td>
-                  ${r.status === 'active' 
-                    ? `<button class="btn" style="padding:6px 12px; font-size:0.8rem;" onclick="window.closeRequirement('${r.id}')">Close RFQ</button>`
-                    : '<span style="color:var(--secondary); font-size:0.85rem;">Closed</span>'
-                  }
+                  ${r.status === 'active'
+        ? `<button class="btn" style="padding:6px 12px; font-size:0.8rem;" onclick="window.closeRequirement('${r.id}')">Close RFQ</button>`
+        : '<span style="color:var(--secondary); font-size:0.85rem;">Closed</span>'
+      }
                 </td>
               </tr>
             `;
-          }).join('')}
+  }).join('')}
           ${state.myRequirements.length === 0 ? '<tr><td colspan="6" style="text-align:center; color:var(--secondary);">No requirements posted yet. Click Post Requirement.</td></tr>' : ''}
         </tbody>
       </table>
@@ -1333,7 +1333,7 @@ window.openCreateReqModal = () => {
       showToast(res.message);
       document.getElementById('create-req-modal').remove();
       fetchDashboardData();
-    } catch (e) {}
+    } catch (e) { }
   });
 };
 
@@ -1344,7 +1344,7 @@ window.closeRequirement = async (id) => {
     });
     showToast(res.message);
     fetchDashboardData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 // Sub-Tab 3: Verification uploads
@@ -1360,15 +1360,15 @@ function renderVerificationDocumentsSection(container) {
         <h4 style="font-size:1.05rem; font-weight:600; margin-bottom:12px;">Step 1: Phone Verification</h4>
         <p style="color:var(--secondary); font-size:0.88rem; margin-bottom:16px;">Verifying your E.164 phone number unlocks higher symmetric contact limits (20-30 threads per day).</p>
         
-        ${user.phone_verified 
-          ? `<p style="color:var(--accent-green-light); font-weight:bold; font-size:0.95rem;">✅ Verified Phone: ${user.phone}</p>`
-          : `
+        ${user.phone_verified
+      ? `<p style="color:var(--accent-green-light); font-weight:bold; font-size:0.95rem;">✅ Verified Phone: ${user.phone}</p>`
+      : `
             <div class="form-group" style="margin-bottom:12px;">
               <input type="text" id="phone-verify-input" class="form-input" placeholder="e.g. +919876543210" value="${user.phone || ''}">
             </div>
             <button class="btn btn-gold" style="font-size:0.85rem;" onclick="window.submitPhoneVerification()">Verify Phone</button>
           `
-        }
+    }
       </div>
 
       <div class="card">
@@ -1380,17 +1380,17 @@ function renderVerificationDocumentsSection(container) {
             <span style="font-size:0.9rem;">Identity Proof (Gov ID / License)</span>
             <span class="role-tag" style="background-color:rgba(255,255,255,0.05); font-size:0.75rem;">Status: ${user.id_proof_status.toUpperCase()}</span>
           </div>
-          ${user.id_proof_status === 'approved' 
-            ? '<small style="color:var(--accent-green-light);">Approved</small>'
-            : user.id_proof_status === 'pending'
-            ? '<small style="color:var(--accent-gold);">Under moderation review</small>'
-            : `
+          ${user.id_proof_status === 'approved'
+      ? '<small style="color:var(--accent-green-light);">Approved</small>'
+      : user.id_proof_status === 'pending'
+        ? '<small style="color:var(--accent-gold);">Under moderation review</small>'
+        : `
               <div style="display:flex; gap:10px;">
                 <input type="text" id="id-doc-name" class="form-input" style="padding:6px 12px; font-size:0.85rem;" placeholder="e.g. Passport.pdf">
                 <button class="btn" style="padding:6px 12px; font-size:0.85rem;" onclick="window.uploadMockDoc('gov_id')">Upload ID</button>
               </div>
             `
-          }
+    }
         </div>
 
         <div style="border-top:1px solid var(--border); padding-top:20px;">
@@ -1398,17 +1398,17 @@ function renderVerificationDocumentsSection(container) {
             <span style="font-size:0.9rem;">Extra Proof (Plantation proof / nursery certification)</span>
             <span class="role-tag" style="background-color:rgba(255,255,255,0.05); font-size:0.75rem;">Status: ${user.extra_proof_status.toUpperCase()}</span>
           </div>
-          ${user.extra_proof_status === 'approved' 
-            ? '<small style="color:var(--accent-green-light);">Approved - trust badge unlocked</small>'
-            : user.extra_proof_status === 'pending'
-            ? '<small style="color:var(--accent-gold);">Under moderation review</small>'
-            : `
+          ${user.extra_proof_status === 'approved'
+      ? '<small style="color:var(--accent-green-light);">Approved - trust badge unlocked</small>'
+      : user.extra_proof_status === 'pending'
+        ? '<small style="color:var(--accent-gold);">Under moderation review</small>'
+        : `
               <div style="display:flex; gap:10px;">
                 <input type="text" id="extra-doc-name" class="form-input" style="padding:6px 12px; font-size:0.85rem;" placeholder="e.g. LandProof.pdf">
                 <button class="btn" style="padding:6px 12px; font-size:0.85rem;" onclick="window.uploadMockDoc('extra_proof')">Upload Proof</button>
               </div>
             `
-          }
+    }
         </div>
       </div>
     </div>
@@ -1426,7 +1426,7 @@ window.submitPhoneVerification = async () => {
     state.user = res.user;
     showToast(res.message);
     fetchDashboardData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.uploadMockDoc = async (type) => {
@@ -1449,7 +1449,7 @@ window.uploadMockDoc = async (type) => {
     state.user = res.user;
     showToast(res.message);
     fetchDashboardData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 // Sub-Tab 4: Company team configuration
@@ -1480,28 +1480,28 @@ function renderCompanyTeamSection(container) {
         </thead>
         <tbody>
           ${state.companyTeam.map(tm => {
-            const isMe = state.activeCompanyMemberId === tm.user_id;
+    const isMe = state.activeCompanyMemberId === tm.user_id;
 
-            return `
+    return `
               <tr>
                 <td><strong>${tm.display_name}</strong></td>
                 <td>${tm.email}</td>
                 <td><span class="role-tag" style="background-color:rgba(255,255,255,0.05); text-transform:uppercase; font-size:0.75rem; padding:2px 6px;">${tm.team_role}</span></td>
                 <td>
-                  ${isMe 
-                    ? `<span class="trust-badge badge-green">Active Simulation</span>` 
-                    : `<button class="btn btn-gold" style="padding:4px 10px; font-size:0.78rem;" onclick="window.switchSimulatedMember('${tm.user_id}')">Switch to this user</button>`
-                  }
+                  ${isMe
+        ? `<span class="trust-badge badge-green">Active Simulation</span>`
+        : `<button class="btn btn-gold" style="padding:4px 10px; font-size:0.78rem;" onclick="window.switchSimulatedMember('${tm.user_id}')">Switch to this user</button>`
+      }
                 </td>
                 <td>
-                  ${tm.team_role !== 'owner' 
-                    ? `<button class="btn btn-crimson" style="padding:6px 12px; font-size:0.8rem;" onclick="window.removeTeamMember('${tm.user_id}')">Remove</button>`
-                    : '<span style="color:var(--secondary); font-size:0.85rem;">Owner Locked</span>'
-                  }
+                  ${tm.team_role !== 'owner'
+        ? `<button class="btn btn-crimson" style="padding:6px 12px; font-size:0.8rem;" onclick="window.removeTeamMember('${tm.user_id}')">Remove</button>`
+        : '<span style="color:var(--secondary); font-size:0.85rem;">Owner Locked</span>'
+      }
                 </td>
               </tr>
             `;
-          }).join('')}
+  }).join('')}
         </tbody>
       </table>
     </div>
@@ -1560,7 +1560,7 @@ window.openInviteMemberModal = () => {
       showToast(res.message);
       document.getElementById('invite-modal').remove();
       fetchDashboardData();
-    } catch (e) {}
+    } catch (e) { }
   });
 };
 
@@ -1573,7 +1573,7 @@ window.removeTeamMember = async (userId) => {
     });
     showToast(res.message);
     fetchDashboardData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 // 6. SYMMETRIC CHAT PANEL (threads with context tags, blocks & reporting)
@@ -1628,7 +1628,7 @@ async function fetchChatThreads() {
     if (state.activeThreadId) {
       renderActiveThreadArea();
     }
-  } catch (e) {}
+  } catch (e) { }
 }
 
 window.selectChatThread = (threadId) => {
@@ -1694,18 +1694,18 @@ function renderActiveThreadArea() {
 
     <div class="chat-messages-container" id="chat-messages-box">
       ${t.messages.map(m => {
-        const isSentByMe = m.sender_id === state.user.id;
-        const senderLabel = isSentByMe ? 'Me' : t.other_party_name;
-        const auditRole = m.audit_sender_role ? ` <small style="opacity:0.7; font-size:0.68rem; text-transform:uppercase;">(${m.audit_sender_role})</small>` : '';
+    const isSentByMe = m.sender_id === state.user.id;
+    const senderLabel = isSentByMe ? 'Me' : t.other_party_name;
+    const auditRole = m.audit_sender_role ? ` <small style="opacity:0.7; font-size:0.68rem; text-transform:uppercase;">(${m.audit_sender_role})</small>` : '';
 
-        return `
+    return `
           <div class="msg-bubble ${isSentByMe ? 'sent' : 'received'}">
             <div style="font-weight:700; font-size:0.75rem; margin-bottom:4px;">${senderLabel}${auditRole}</div>
             <div>${m.content}</div>
-            <div style="font-size:0.65rem; text-align:right; margin-top:4px; opacity:0.8;">${new Date(m.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            <div style="font-size:0.65rem; text-align:right; margin-top:4px; opacity:0.8;">${new Date(m.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
           </div>
         `;
-      }).join('')}
+  }).join('')}
     </div>
 
     <div class="chat-input-area">
@@ -1735,7 +1735,7 @@ function renderActiveThreadArea() {
       });
       input.value = '';
       fetchChatThreads();
-    } catch (e) {}
+    } catch (e) { }
   });
 }
 
@@ -1747,11 +1747,11 @@ window.assignThread = async (threadId, assignToUserId) => {
     });
     showToast(res.message);
     fetchChatThreads();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.toggleBlockUser = async (userId, action) => {
-  const confirmMsg = action === 'block' 
+  const confirmMsg = action === 'block'
     ? 'Block this user? You will silently ignore all messages from them. They will receive no warning notification.'
     : 'Unblock this user?';
   if (!confirm(confirmMsg)) return;
@@ -1762,13 +1762,13 @@ window.toggleBlockUser = async (userId, action) => {
       body: JSON.stringify({ userId, action })
     });
     showToast(res.message);
-    
+
     // Refresh user profile in state
     const pData = await apiCall('/api/v1/auth/profile');
     state.user = pData.user;
-    
+
     fetchChatThreads();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.openReportUserModal = (userId, listingId) => {
@@ -1811,7 +1811,7 @@ window.openReportUserModal = (userId, listingId) => {
       });
       showToast(res.message);
       document.getElementById('report-user-modal').remove();
-    } catch (e) {}
+    } catch (e) { }
   });
 };
 
@@ -1851,7 +1851,7 @@ async function fetchInternalStaffData() {
     if (tab === 'moderation-users') {
       const users = await apiCall('/api/v1/internal/moderation/users');
       state.moderationUsers = users;
-      
+
       content.innerHTML = `
         <h3 style="font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-bottom:16px;">Pending User Onboarding & Badges Approvals</h3>
         <div class="enterprise-table-container">
@@ -1866,11 +1866,11 @@ async function fetchInternalStaffData() {
             </thead>
             <tbody>
               ${users.map(u => {
-                const docLinks = (u.verification_documents || []).map(d => 
-                  `<div><a href="${d.doc_url}" target="_blank" style="color:var(--accent-gold); font-size:0.85rem;">📄 ${d.doc_type.toUpperCase()}: ${d.doc_name}</a></div>`
-                ).join('');
+        const docLinks = (u.verification_documents || []).map(d =>
+          `<div><a href="${d.doc_url}" target="_blank" style="color:var(--accent-gold); font-size:0.85rem;">📄 ${d.doc_type.toUpperCase()}: ${d.doc_name}</a></div>`
+        ).join('');
 
-                return `
+        return `
                   <tr>
                     <td>
                       <strong>${u.email}</strong>
@@ -1887,18 +1887,18 @@ async function fetchInternalStaffData() {
                     </td>
                   </tr>
                 `;
-              }).join('')}
+      }).join('')}
               ${users.length === 0 ? '<tr><td colspan="4" style="text-align:center; color:var(--secondary); padding:20px;">No pending users in verification queue.</td></tr>' : ''}
             </tbody>
           </table>
         </div>
       `;
-    } 
-    
+    }
+
     else if (tab === 'moderation-listings') {
       const listings = await apiCall('/api/v1/internal/moderation/listings');
       state.moderationListings = listings;
-      
+
       content.innerHTML = `
         <h3 style="font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-bottom:16px;">Listing Moderation & CITES Audit Controls</h3>
         <div class="enterprise-table-container">
@@ -1914,9 +1914,9 @@ async function fetchInternalStaffData() {
             </thead>
             <tbody>
               ${listings.map(l => {
-                const flagClass = l.compliance_passed ? 'color:var(--accent-green-light);' : 'color:var(--accent-crimson); font-weight:bold;';
-                
-                return `
+        const flagClass = l.compliance_passed ? 'color:var(--accent-green-light);' : 'color:var(--accent-crimson); font-weight:bold;';
+
+        return `
                   <tr>
                     <td>
                       <strong>${l.title}</strong>
@@ -1936,13 +1936,13 @@ async function fetchInternalStaffData() {
                     </td>
                   </tr>
                 `;
-              }).join('')}
+      }).join('')}
             </tbody>
           </table>
         </div>
       `;
-    } 
-    
+    }
+
     else if (tab === 'grievances') {
       const grievances = await apiCall('/api/v1/internal/compliance/grievances');
       state.grievances = grievances;
@@ -1965,29 +1965,29 @@ async function fetchInternalStaffData() {
             </thead>
             <tbody>
               ${grievances.map(g => {
-                const now = Date.now();
-                const fileDate = new Date(g.created_at).getTime();
-                
-                // SLA checks
-                let ackAlert = '';
-                if (!g.acknowledged_at) {
-                  const hours = (now - fileDate) / (1000 * 60 * 60);
-                  if (hours > 24) ackAlert = `<div style="color:var(--accent-crimson); font-size:0.72rem; font-weight:bold;">⚠️ ACK LATE (>24h)</div>`;
-                } else {
-                  const diffHours = (new Date(g.acknowledged_at).getTime() - fileDate) / (1000 * 60 * 60);
-                  ackAlert = `<div style="color:var(--secondary); font-size:0.72rem;">Ack in ${diffHours.toFixed(1)}h</div>`;
-                }
+        const now = Date.now();
+        const fileDate = new Date(g.created_at).getTime();
 
-                let resolveAlert = '';
-                if (!g.resolved_at) {
-                  const days = (now - fileDate) / (1000 * 60 * 60 * 24);
-                  if (days > 15) resolveAlert = `<div style="color:var(--accent-crimson); font-size:0.72rem; font-weight:bold;">⚠️ SLA VIOLATED (>15d)</div>`;
-                } else {
-                  const diffDays = (new Date(g.resolved_at).getTime() - fileDate) / (1000 * 60 * 60 * 24);
-                  resolveAlert = `<div style="color:var(--secondary); font-size:0.72rem;">Resolved in ${diffDays.toFixed(1)} days</div>`;
-                }
+        // SLA checks
+        let ackAlert = '';
+        if (!g.acknowledged_at) {
+          const hours = (now - fileDate) / (1000 * 60 * 60);
+          if (hours > 24) ackAlert = `<div style="color:var(--accent-crimson); font-size:0.72rem; font-weight:bold;">⚠️ ACK LATE (>24h)</div>`;
+        } else {
+          const diffHours = (new Date(g.acknowledged_at).getTime() - fileDate) / (1000 * 60 * 60);
+          ackAlert = `<div style="color:var(--secondary); font-size:0.72rem;">Ack in ${diffHours.toFixed(1)}h</div>`;
+        }
 
-                return `
+        let resolveAlert = '';
+        if (!g.resolved_at) {
+          const days = (now - fileDate) / (1000 * 60 * 60 * 24);
+          if (days > 15) resolveAlert = `<div style="color:var(--accent-crimson); font-size:0.72rem; font-weight:bold;">⚠️ SLA VIOLATED (>15d)</div>`;
+        } else {
+          const diffDays = (new Date(g.resolved_at).getTime() - fileDate) / (1000 * 60 * 60 * 24);
+          resolveAlert = `<div style="color:var(--secondary); font-size:0.72rem;">Resolved in ${diffDays.toFixed(1)} days</div>`;
+        }
+
+        return `
                   <tr>
                     <td>
                       <div style="font-size:0.9rem; font-weight:600;">"${g.complaint_text}"</div>
@@ -2003,26 +2003,26 @@ async function fetchInternalStaffData() {
                     <td><span class="role-tag">${g.status.toUpperCase()}</span></td>
                     <td>
                       <div style="display:flex; gap:6px;">
-                        ${g.status === 'pending' 
-                          ? `<button class="btn btn-gold" style="padding:6px 12px; font-size:0.8rem;" onclick="window.grievanceAction('${g.id}', 'acknowledge')">Acknowledge</button>` 
-                          : ''
-                        }
-                        ${g.status !== 'resolved' 
-                          ? `<button class="btn" style="padding:6px 12px; font-size:0.8rem;" onclick="window.openResolveGrievanceModal('${g.id}')">Resolve Ticket</button>` 
-                          : '<span style="color:var(--secondary);">Closed</span>'
-                        }
+                        ${g.status === 'pending'
+            ? `<button class="btn btn-gold" style="padding:6px 12px; font-size:0.8rem;" onclick="window.grievanceAction('${g.id}', 'acknowledge')">Acknowledge</button>`
+            : ''
+          }
+                        ${g.status !== 'resolved'
+            ? `<button class="btn" style="padding:6px 12px; font-size:0.8rem;" onclick="window.openResolveGrievanceModal('${g.id}')">Resolve Ticket</button>`
+            : '<span style="color:var(--secondary);">Closed</span>'
+          }
                       </div>
                     </td>
                   </tr>
                 `;
-              }).join('')}
+      }).join('')}
               ${grievances.length === 0 ? '<tr><td colspan="6" style="text-align:center; color:var(--secondary); padding:20px;">No complaints reported.</td></tr>' : ''}
             </tbody>
           </table>
         </div>
       `;
-    } 
-    
+    }
+
     else if (tab === 'dpo') {
       content.innerHTML = `
         <h3 style="font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-bottom:8px;">Data Protection Officer Registry (DPDP Act 2023)</h3>
@@ -2073,8 +2073,8 @@ async function fetchInternalStaffData() {
           </table>
         </div>
       `;
-    } 
-    
+    }
+
     else if (tab === 'analytics') {
       const stats = await apiCall('/api/v1/internal/analytics/overview');
       state.analyticsOverview = stats;
@@ -2122,7 +2122,7 @@ async function fetchInternalStaffData() {
         </div>
       `;
     }
-  } catch (e) {}
+  } catch (e) { }
 }
 
 window.verifyUserDoc = async (userId, docType, status) => {
@@ -2136,7 +2136,7 @@ window.verifyUserDoc = async (userId, docType, status) => {
     });
     showToast(res.message);
     fetchInternalStaffData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.moderateListingReview = async (listingId, approve) => {
@@ -2147,7 +2147,7 @@ window.moderateListingReview = async (listingId, approve) => {
     });
     showToast(res.message);
     fetchInternalStaffData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.grievanceAction = async (id, action) => {
@@ -2158,7 +2158,7 @@ window.grievanceAction = async (id, action) => {
     });
     showToast(res.message);
     fetchInternalStaffData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.openResolveGrievanceModal = (id) => {
@@ -2196,14 +2196,14 @@ window.openResolveGrievanceModal = (id) => {
       showToast(res.message);
       document.getElementById('resolve-modal').remove();
       fetchInternalStaffData();
-    } catch (e) {}
+    } catch (e) { }
   });
 };
 
 window.dpoExportData = async (userId) => {
   try {
     const data = await apiCall(`/api/v1/internal/compliance/dpo/export/${userId}`);
-    
+
     // Simulate downloading JSON data
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -2214,9 +2214,9 @@ window.dpoExportData = async (userId) => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    
+
     showToast('Personal data package compiled and downloaded successfully.');
-  } catch (e) {}
+  } catch (e) { }
 };
 
 window.dpoEraseUser = async (userId) => {
@@ -2227,8 +2227,8 @@ window.dpoEraseUser = async (userId) => {
     });
     showToast(res.message);
     fetchInternalStaffData();
-  } catch (e) {}
+  } catch (e) { }
 };
 
 // Event Bindings helpers
-function bindAppEvents() {}
+function bindAppEvents() { }
