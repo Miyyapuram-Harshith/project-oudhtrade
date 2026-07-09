@@ -19,6 +19,26 @@
       ],
       "cites_category": "Appendix II (Aquilaria spp.)",
       "checked_at": "2026-07-09T18:20:27.505Z"
+    },
+    {
+      "id": "b73261de-d0a8-47c7-a7c0-2938aeca7769",
+      "listing_title": "Wild-harvested Aquilaria Malaccensis logs",
+      "is_compliant": false,
+      "summary": "COMPLIANCE ALERT: Listing flagged as non-compliant. Potential illegal wildlife trade or CITES violation detected due to keywords indicating wild/unpermitted harvest.",
+      "flags": [
+        "Contains protected species: Aquilaria Malaccensis.",
+        "Red flag keyword 'wild-harvested' detected: Wild-harvested Agarwood is subject to severe CITES Appendix II export quotas and permits. Natural harvesting is heavily restricted.",
+        "Red flag keyword 'natural forest' detected: Natural forest extraction is generally prohibited or strictly quota-controlled to prevent deforestation.",
+        "Red flag keyword 'no cites' detected: Any international trade of Aquilaria species without a CITES certificate is illegal.",
+        "Red flag keyword 'under-the-table' detected: Informal trade suggestions to bypass statutory trade registration rules."
+      ],
+      "recommendations": [
+        "Ensure official CITES certificate number is specified in your listing details.",
+        "Remove references to unauthorized harvesting or bypass of customs.",
+        "Provide a valid CITES registration certificate or cultivation source documentation."
+      ],
+      "cites_category": "Appendix II (Aquilaria spp.)",
+      "checked_at": "2026-07-09T19:16:56.275Z"
     }
   ],
   "verification_documents": [
@@ -30,6 +50,15 @@
       "doc_url": "https://assets-oudh.s3.amazonaws.com/verifications/doc.pdf",
       "status": "pending",
       "uploaded_at": "2026-07-09T18:20:27.459Z"
+    },
+    {
+      "id": "ff648473-85e9-441c-abb0-05d952d56797",
+      "user_id": "77b0e88c-e2e6-419f-9a55-9c46e854eb5a",
+      "doc_type": "gov_id",
+      "doc_name": "SellerID.pdf",
+      "doc_url": "https://assets-oudh.s3.amazonaws.com/verifications/doc.pdf",
+      "status": "pending",
+      "uploaded_at": "2026-07-09T19:16:56.231Z"
     }
   ],
   "chat_history": [],
