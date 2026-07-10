@@ -474,6 +474,13 @@
         "is_compliant": false
       },
       "created_at": "2026-07-10T07:48:59.329Z"
+    },
+    {
+      "id": "4b6b4c68-c65a-4d4e-b39d-274d7c5b1007",
+      "action": "USER_LOGIN",
+      "user_id": "staff-ceo-uuid",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T08:31:13.096Z"
     }
   ],
   "companies": [
