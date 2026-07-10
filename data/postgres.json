@@ -3,7 +3,7 @@
     {
       "id": "staff-ceo-uuid",
       "email": "ceo@oudhtrade.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "ceo",
       "account_state": "active_verified",
       "display_name": "Vikram Singh (CEO)",
@@ -12,7 +12,7 @@
     {
       "id": "staff-ops-uuid",
       "email": "compliance@oudhtrade.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "ops_lead",
       "account_state": "active_verified",
       "display_name": "Priya Sharma (Grievance Officer)",
@@ -21,7 +21,7 @@
     {
       "id": "staff-mod-uuid",
       "email": "moderator@oudhtrade.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "moderator",
       "account_state": "active_verified",
       "display_name": "Amit Patel (T&S Moderator)",
@@ -30,7 +30,7 @@
     {
       "id": "staff-support-uuid",
       "email": "support@oudhtrade.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "support_agent",
       "account_state": "active_verified",
       "display_name": "Rajesh Kumar (Support)",
@@ -38,11 +38,11 @@
     },
     {
       "id": "buyer-uuid-1",
-      "email": "buyer@gmail.com",
-      "password": "password123",
+      "email": "buyer@example.com",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "buyer",
       "account_state": "active_verified",
-      "phone": "+919876543210",
+      "phone": "+915555555555",
       "phone_verified": true,
       "id_proof_status": "approved",
       "trust_badges": [
@@ -62,11 +62,11 @@
     },
     {
       "id": "seller-uuid-1",
-      "email": "seller@gmail.com",
-      "password": "password123",
+      "email": "seller@example.com",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "seller",
       "account_state": "active_verified",
-      "phone": "+919988776655",
+      "phone": "+915555555556",
       "phone_verified": true,
       "id_proof_status": "approved",
       "trust_badges": [
@@ -86,11 +86,11 @@
     },
     {
       "id": "farmer-uuid-1",
-      "email": "farmer@gmail.com",
-      "password": "password123",
+      "email": "farmer@example.com",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "farmer",
       "account_state": "active_verified",
-      "phone": "+66812345678",
+      "phone": "+66555555555",
       "phone_verified": true,
       "id_proof_status": "approved",
       "trust_badges": [
@@ -115,11 +115,11 @@
     },
     {
       "id": "inoc-uuid-1",
-      "email": "inoculator@gmail.com",
-      "password": "password123",
+      "email": "inoculator@example.com",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "inoculation_provider",
       "account_state": "active_verified",
-      "phone": "+60123456789",
+      "phone": "+60555555555",
       "phone_verified": true,
       "id_proof_status": "approved",
       "trust_badges": [
@@ -148,11 +148,11 @@
     },
     {
       "id": "nursery-uuid-1",
-      "email": "nursery@gmail.com",
-      "password": "password123",
+      "email": "nursery@example.com",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "nursery",
       "account_state": "active_verified",
-      "phone": "+84901234567",
+      "phone": "+84555555555",
       "phone_verified": true,
       "id_proof_status": "approved",
       "trust_badges": [
@@ -179,10 +179,10 @@
     {
       "id": "company-owner-uuid-1",
       "email": "owner@agarcorp.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "company",
       "account_state": "active_verified",
-      "phone": "+6591234567",
+      "phone": "+6555555555",
       "phone_verified": true,
       "id_proof_status": "approved",
       "trust_badges": [
@@ -200,17 +200,17 @@
           "services"
         ],
         "company_description": "Global conglomerate covering plantations, processing factories, custom inoculation, and finished Oud oil distribution.",
-        "company_phone": "+6567890123"
+        "company_phone": "+6555555556"
       },
       "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "company-mgr-uuid-1",
       "email": "manager@agarcorp.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "company",
       "account_state": "active_verified",
-      "phone": "+6598765432",
+      "phone": "+6555555557",
       "phone_verified": true,
       "company_id": "agarcorp-company-uuid",
       "profile": {
@@ -222,10 +222,10 @@
     {
       "id": "company-supp-uuid-1",
       "email": "support@agarcorp.com",
-      "password": "password123",
+      "passwordHash": "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       "role": "company",
       "account_state": "active_verified",
-      "phone": "+6595556666",
+      "phone": "+6555555558",
       "phone_verified": true,
       "company_id": "agarcorp-company-uuid",
       "profile": {
@@ -235,49 +235,20 @@
       "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
-      "id": "candidate-uuid-stripe-001",
-      "email": "candidate@hiring.com",
-      "password": "password123",
-      "role": "candidate",
-      "account_state": "active_verified",
-      "display_name": "Alex Rivera",
-      "created_at": "2026-07-10T03:37:05.079Z",
-      "profile": {
-        "skills": [
-          "React.js",
-          "CSS Grid",
-          "Node.js",
-          "Python"
-        ],
-        "education": "B.Tech in Computer Science, IIT Bombay",
-        "course_progress": {
-          "course-1": 75,
-          "course-2": 40,
-          "course-3": 10
-        },
-        "certificates": [
-          "course-1"
-        ]
-      }
-    },
-    {
-      "id": "hr-uuid-stripe-002",
-      "email": "hr@enterprise.com",
-      "password": "password123",
-      "role": "hr",
-      "company_id": "stripe-enterprise-uuid",
-      "account_state": "active_verified",
-      "display_name": "Jane Doe (HR Director)",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "employee-uuid-stripe-003",
-      "email": "employee@hiring.com",
-      "password": "password123",
-      "role": "employee",
-      "account_state": "active_verified",
-      "display_name": "Sarah Jenkins (Curriculum Lead)",
-      "created_at": "2026-07-10T03:37:05.079Z"
+      "id": "33fb20bf-f7d0-4717-be47-1dfe66b6a1bf",
+      "email": "newuser@example.com",
+      "passwordHash": "c822a0abf4ef0a5fc2a4c2010ed111e16af3ae95cee462a55e7877b8623ade36",
+      "role": "buyer",
+      "account_state": "active_unverified",
+      "phone": "",
+      "phone_verified": false,
+      "id_proof_status": "unsubmitted",
+      "extra_proof_status": "unsubmitted",
+      "trust_badges": [],
+      "company_id": null,
+      "profile": {},
+      "blocked_users": [],
+      "created_at": "2026-07-10T19:57:39.655Z"
     }
   ],
   "listings": [
@@ -389,48 +360,6 @@
   "data_rights_requests": [],
   "audit_logs": [
     {
-      "id": "e72e4e6a-eb6b-4156-915c-587242ad0350",
-      "action": "USER_LOGIN",
-      "user_id": "candidate-uuid-stripe-001",
-      "ip_address": "::1",
-      "created_at": "2026-07-10T03:53:59.560Z"
-    },
-    {
-      "id": "b657227f-a6ab-4f1f-bb65-da39deb3b7d9",
-      "action": "USER_LOGIN",
-      "user_id": "candidate-uuid-stripe-001",
-      "ip_address": "::1",
-      "created_at": "2026-07-10T04:03:44.368Z"
-    },
-    {
-      "id": "e1f46175-5758-4fcf-b59b-fcd58d625614",
-      "action": "USER_LOGIN",
-      "user_id": "candidate-uuid-stripe-001",
-      "ip_address": "::1",
-      "created_at": "2026-07-10T04:06:18.294Z"
-    },
-    {
-      "id": "22387ddd-d6bf-4ae6-8398-125b7601c647",
-      "action": "JOB_APPLIED",
-      "user_id": "candidate-uuid-stripe-001",
-      "ip_address": "::1",
-      "created_at": "2026-07-10T04:08:01.781Z"
-    },
-    {
-      "id": "c6506153-0049-465a-b8a1-7bfa0d5eb8b8",
-      "action": "USER_LOGIN",
-      "user_id": "hr-uuid-stripe-002",
-      "ip_address": "::1",
-      "created_at": "2026-07-10T04:11:05.277Z"
-    },
-    {
-      "id": "d31d4ec2-a3fc-4584-a730-13f0ce3615bd",
-      "action": "USER_LOGIN",
-      "user_id": "hr-uuid-stripe-002",
-      "ip_address": "::1",
-      "created_at": "2026-07-10T04:15:31.611Z"
-    },
-    {
       "id": "b61b4822-42af-4037-9783-93b654429fe0",
       "action": "USER_LOGIN",
       "user_id": "staff-ceo-uuid",
@@ -481,137 +410,59 @@
       "user_id": "staff-ceo-uuid",
       "ip_address": "::1",
       "created_at": "2026-07-10T08:31:13.096Z"
+    },
+    {
+      "id": "a3de6725-73f3-4781-b34a-0fb4c173df3f",
+      "action": "USER_LOGIN",
+      "user_id": "staff-ceo-uuid",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T19:57:26.308Z"
+    },
+    {
+      "id": "ced68779-4001-455a-a9a4-d9956abd4b18",
+      "action": "USER_LOGIN",
+      "user_id": "buyer-uuid-1",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T19:57:30.974Z"
+    },
+    {
+      "id": "53c44dd6-8030-4465-92db-5925a526bb1a",
+      "action": "USER_SIGNUP_INITIATED",
+      "user_id": null,
+      "details": {
+        "email": "newuser@example.com",
+        "role": "buyer"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-10T19:57:36.065Z"
+    },
+    {
+      "id": "6215f222-cc8f-4df8-815f-84c75a3b118e",
+      "action": "EMAIL_VERIFICATION_SUCCESS",
+      "user_id": "33fb20bf-f7d0-4717-be47-1dfe66b6a1bf",
+      "details": {
+        "email": "newuser@example.com",
+        "role": "buyer"
+      },
+      "ip_address": "::1",
+      "created_at": "2026-07-10T19:57:39.655Z"
+    },
+    {
+      "id": "7b585a77-6a5f-43b9-b8fd-b7c56c772caf",
+      "action": "USER_LOGIN",
+      "user_id": "33fb20bf-f7d0-4717-be47-1dfe66b6a1bf",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T19:57:45.095Z"
     }
   ],
   "companies": [
     {
-      "id": "stripe-enterprise-uuid",
-      "name": "Stripe Inc.",
-      "subscription_tier": "free",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "linear-uuid",
-      "name": "Linear App",
-      "subscription_tier": "enterprise",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "openai-uuid",
-      "name": "OpenAI",
+      "id": "agarcorp-company-uuid",
+      "name": "AgarCorp International Pte Ltd",
       "subscription_tier": "enterprise",
       "created_at": "2026-07-10T03:37:05.079Z"
     }
   ],
-  "payments": [
-    {
-      "id": "pay-1",
-      "company_id": "stripe-enterprise-uuid",
-      "razorpay_order_id": "order_stripe_001",
-      "amount": 19999,
-      "status": "paid",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    }
-  ],
-  "verification_documents": [],
-  "jobs": [
-    {
-      "id": "job-1",
-      "company_id": "stripe-enterprise-uuid",
-      "title": "Staff Frontend Engineer",
-      "eligibility_criteria": "5+ years experience in CSS/JS and reactive SPAs. Experience in design systems is a plus.",
-      "is_active": true,
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "job-2",
-      "company_id": "stripe-enterprise-uuid",
-      "title": "AI Research Scientist",
-      "eligibility_criteria": "Strong background in Whisper speech transcription and OpenCV body language models.",
-      "is_active": true,
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "job-3",
-      "company_id": "linear-uuid",
-      "title": "Full-Stack Product Developer",
-      "eligibility_criteria": "Comfortable with Node.js, PostgreSQL, and high-fidelity micro-interactions.",
-      "is_active": true,
-      "created_at": "2026-07-10T03:37:05.079Z"
-    }
-  ],
-  "applications": [
-    {
-      "id": "app-1",
-      "job_id": "job-1",
-      "candidate_id": "candidate-uuid-stripe-001",
-      "resume_url": "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
-      "status": "evaluation_pending",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "app-2",
-      "job_id": "job-2",
-      "candidate_id": "candidate-uuid-stripe-001",
-      "resume_url": "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
-      "status": "assessment_pending",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "980c1b62-37d0-4a69-8f24-aa86303193fa",
-      "job_id": "job-3",
-      "candidate_id": "candidate-uuid-stripe-001",
-      "resume_url": "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
-      "profile_details": {
-        "skills": [
-          "React",
-          "CSS",
-          "Node"
-        ]
-      },
-      "status": "assessment_pending",
-      "created_at": "2026-07-10T04:08:01.780Z"
-    }
-  ],
-  "interview_results": [
-    {
-      "id": "result-1",
-      "application_id": "app-1",
-      "overall_score": 88,
-      "cognitive_score": 92,
-      "communication_score": 85,
-      "technical_score": 87,
-      "mongodb_report_id": "mongo-report-stripe-101",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    }
-  ],
-  "courses": [
-    {
-      "id": "course-1",
-      "title": "Full-Stack Web Development",
-      "description": "Master React.js, Node.js, and modern CSS layout design.",
-      "duration": "6 Weeks",
-      "lectures": 24,
-      "modules": 4,
-      "certificate": true
-    },
-    {
-      "id": "course-2",
-      "title": "AI & Machine Learning Engineering",
-      "description": "Learn computer vision with OpenCV, speech recognition with Whisper, and NLP workflows.",
-      "duration": "8 Weeks",
-      "lectures": 32,
-      "modules": 5,
-      "certificate": true
-    },
-    {
-      "id": "course-3",
-      "title": "System Design & High Performance Computing",
-      "description": "Design fault-tolerant architectures using AWS, Postgres, MongoDB, and microservices.",
-      "duration": "4 Weeks",
-      "lectures": 16,
-      "modules": 3,
-      "certificate": true
-    }
-  ]
+  "payments": [],
+  "verification_documents": []
 }

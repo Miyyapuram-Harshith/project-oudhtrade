@@ -46,7 +46,7 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "staff-ceo-uuid",
       email: "ceo@oudhtrade.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "ceo", // internal role
       account_state: "active_verified",
       display_name: "Vikram Singh (CEO)",
@@ -57,7 +57,7 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "staff-ops-uuid",
       email: "compliance@oudhtrade.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "ops_lead", // Grievance Officer
       account_state: "active_verified",
       display_name: "Priya Sharma (Grievance Officer)",
@@ -68,7 +68,7 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "staff-mod-uuid",
       email: "moderator@oudhtrade.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "moderator",
       account_state: "active_verified",
       display_name: "Amit Patel (T&S Moderator)",
@@ -79,7 +79,7 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "staff-support-uuid",
       email: "support@oudhtrade.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "support_agent",
       account_state: "active_verified",
       display_name: "Rajesh Kumar (Support)",
@@ -90,11 +90,11 @@ const seedDatabase = (db) => {
     // Buyer
     db.users.push({
       id: "buyer-uuid-1",
-      email: "buyer@gmail.com",
-      password: "password123",
+      email: "buyer@example.com",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "buyer",
       account_state: "active_verified",
-      phone: "+919876543210",
+      phone: "+915555555555",
       phone_verified: true,
       id_proof_status: "approved",
       trust_badges: ["Verified Buyer"],
@@ -111,11 +111,11 @@ const seedDatabase = (db) => {
     // Seller (Trader)
     db.users.push({
       id: "seller-uuid-1",
-      email: "seller@gmail.com",
-      password: "password123",
+      email: "seller@example.com",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "seller",
       account_state: "active_verified",
-      phone: "+919988776655",
+      phone: "+915555555556",
       phone_verified: true,
       id_proof_status: "approved",
       trust_badges: ["Verified Seller"],
@@ -132,11 +132,11 @@ const seedDatabase = (db) => {
     // Farmer
     db.users.push({
       id: "farmer-uuid-1",
-      email: "farmer@gmail.com",
-      password: "password123",
+      email: "farmer@example.com",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "farmer",
       account_state: "active_verified",
-      phone: "+66812345678",
+      phone: "+66555555555",
       phone_verified: true,
       id_proof_status: "approved",
       trust_badges: ["Verified Plantation"],
@@ -156,11 +156,11 @@ const seedDatabase = (db) => {
     // Inoculation Provider
     db.users.push({
       id: "inoc-uuid-1",
-      email: "inoculator@gmail.com",
-      password: "password123",
+      email: "inoculator@example.com",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "inoculation_provider",
       account_state: "active_verified",
-      phone: "+60123456789",
+      phone: "+60555555555",
       phone_verified: true,
       id_proof_status: "approved",
       trust_badges: ["Verified Specialist"],
@@ -179,11 +179,11 @@ const seedDatabase = (db) => {
     // Nursery
     db.users.push({
       id: "nursery-uuid-1",
-      email: "nursery@gmail.com",
-      password: "password123",
+      email: "nursery@example.com",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "nursery",
       account_state: "active_verified",
-      phone: "+84901234567",
+      phone: "+84555555555",
       phone_verified: true,
       id_proof_status: "approved",
       trust_badges: ["Verified Nursery"],
@@ -204,10 +204,10 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "company-owner-uuid-1",
       email: "owner@agarcorp.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "company",
       account_state: "active_verified",
-      phone: "+6591234567",
+      phone: "+6555555555",
       phone_verified: true,
       id_proof_status: "approved",
       trust_badges: ["Verified Company"],
@@ -220,7 +220,7 @@ const seedDatabase = (db) => {
         work_email: "contact@agarcorp.com",
         company_categories: ["products", "services"],
         company_description: "Global conglomerate covering plantations, processing factories, custom inoculation, and finished Oud oil distribution.",
-        company_phone: "+6567890123"
+        company_phone: "+6555555556"
       },
       created_at: new Date().toISOString()
     });
@@ -237,10 +237,10 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "company-mgr-uuid-1",
       email: "manager@agarcorp.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "company",
       account_state: "active_verified",
-      phone: "+6598765432",
+      phone: "+6555555557",
       phone_verified: true,
       company_id: "agarcorp-company-uuid",
       profile: {
@@ -260,10 +260,10 @@ const seedDatabase = (db) => {
     db.users.push({
       id: "company-supp-uuid-1",
       email: "support@agarcorp.com",
-      password: "password123",
+      passwordHash: "41bd876b085d6031cb0e04de35b88d77f83a4ba39f879fee40805ac19e356023",
       role: "company",
       account_state: "active_verified",
-      phone: "+6595556666",
+      phone: "+6555555558",
       phone_verified: true,
       company_id: "agarcorp-company-uuid",
       profile: {

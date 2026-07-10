@@ -1,9 +1,14 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
 import pgDb from '../data/postgres.js';
 import mongoDb from '../data/mongodb.js';
 
 const router = express.Router();
+
+function hashPassword(password) {
+  return crypto.createHash('sha256').update(password).digest('hex');
+}
 
 // Helper: Authenticate user by Bearer token
 export function authenticateUser(req, res, next) {
@@ -47,7 +52,7 @@ router.post('/signup', (req, res) => {
     return res.status(400).json({ error: 'Registration rejected: Email already registered.' });
   }
 
-  const validRoles = ['buyer', 'seller', 'company', 'farmer', 'inoculation_provider', 'nursery', 'candidate', 'hr', 'employee', 'admin', 'recruiter'];
+  const validRoles = ['buyer', 'seller', 'company', 'farmer', 'inoculation_provider', 'nursery', 'admin'];
   if (!validRoles.includes(role)) {
     return res.status(400).json({ error: 'Registration rejected: Invalid role.' });
   }
@@ -122,7 +127,7 @@ router.post('/verify-email', (req, res) => {
   user = {
     id: userId,
     email: normalizedEmail,
-    password: record.password,
+    passwordHash: hashPassword(record.password),
     role: record.role, // Locked forever
     account_state: 'active_unverified', // Email verified but documents pending
     phone: '',
@@ -176,7 +181,7 @@ router.post('/login', (req, res) => {
   }
 
   const user = pgDb.users.find(u => u.email.toLowerCase() === email.toLowerCase());
-  if (!user || user.password !== password) {
+  if (!user || user.passwordHash !== hashPassword(password)) {
     return res.status(400).json({ error: 'Invalid email or password.' });
   }
 
@@ -430,7 +435,7 @@ router.post('/company/members', authenticateUser, authorizeRoles('company'), (re
       targetUser = {
         id: uuidv4(),
         email: email.toLowerCase(),
-        password: 'password123', // default
+        passwordHash: hashPassword('demo-password'), // default
         role: 'company',
         account_state: 'active_verified',
         phone: '',
