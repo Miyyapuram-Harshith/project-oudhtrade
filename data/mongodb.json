@@ -64,7 +64,23 @@
   "chat_history": [],
   "logs": [],
   "analytics": [],
-  "interview_sessions": [],
+  "ai_reports": [
+    {
+      "id": "9c109654-727f-4f1c-9695-f6b75cce914e",
+      "application_id": "acb93a50-f239-4481-b1ad-bb5f02edf97c",
+      "candidate_id": "cand-uuid-5555-5555-555555555555",
+      "summary": "Candidate demonstrated high competency matching requirements. Speech transcription confidence was strong. Eye contact remained stable at 85.5%. NLP analysis shows alignment with candidate answers.",
+      "strengths": [
+        "Clear speech syntax",
+        "Consistent posture alignment",
+        "Professional eye contact"
+      ],
+      "weaknesses": [
+        "Minor voice pauses during technical terms"
+      ],
+      "created_at": "2026-07-09T16:46:09.997Z"
+    }
+  ],
   "speech_transcripts": [
     {
       "id": "93e16c55-a24a-4ff6-a5f0-aa1c1c478350",
@@ -467,21 +483,5 @@
       "created_at": "2026-07-09T16:46:09.997Z"
     }
   ],
-  "ai_reports": [
-    {
-      "id": "9c109654-727f-4f1c-9695-f6b75cce914e",
-      "application_id": "acb93a50-f239-4481-b1ad-bb5f02edf97c",
-      "candidate_id": "cand-uuid-5555-5555-555555555555",
-      "summary": "Candidate demonstrated high competency matching requirements. Speech transcription confidence was strong. Eye contact remained stable at 85.5%. NLP analysis shows alignment with candidate answers.",
-      "strengths": [
-        "Clear speech syntax",
-        "Consistent posture alignment",
-        "Professional eye contact"
-      ],
-      "weaknesses": [
-        "Minor voice pauses during technical terms"
-      ],
-      "created_at": "2026-07-09T16:46:09.997Z"
-    }
-  ]
+  "interview_sessions": []
 }

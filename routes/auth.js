@@ -47,7 +47,7 @@ router.post('/signup', (req, res) => {
     return res.status(400).json({ error: 'Registration rejected: Email already registered.' });
   }
 
-  const validRoles = ['buyer', 'seller', 'company', 'farmer', 'inoculation_provider', 'nursery'];
+  const validRoles = ['buyer', 'seller', 'company', 'farmer', 'inoculation_provider', 'nursery', 'candidate', 'hr', 'employee', 'admin', 'recruiter'];
   if (!validRoles.includes(role)) {
     return res.status(400).json({ error: 'Registration rejected: Invalid role.' });
   }

@@ -7,7 +7,7 @@
       "role": "ceo",
       "account_state": "active_verified",
       "display_name": "Vikram Singh (CEO)",
-      "created_at": "2026-07-09T19:14:59.151Z"
+      "created_at": "2026-07-10T03:37:05.078Z"
     },
     {
       "id": "staff-ops-uuid",
@@ -16,7 +16,7 @@
       "role": "ops_lead",
       "account_state": "active_verified",
       "display_name": "Priya Sharma (Grievance Officer)",
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "staff-mod-uuid",
@@ -25,7 +25,7 @@
       "role": "moderator",
       "account_state": "active_verified",
       "display_name": "Amit Patel (T&S Moderator)",
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "staff-support-uuid",
@@ -34,7 +34,7 @@
       "role": "support_agent",
       "account_state": "active_verified",
       "display_name": "Rajesh Kumar (Support)",
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "buyer-uuid-1",
@@ -58,7 +58,7 @@
           "chips"
         ]
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "seller-uuid-1",
@@ -82,7 +82,7 @@
         "seller_description": "Wholesale suppliers of premium grade wild and cultivated Assam Agarwood chips and raw materials since 2012.",
         "years_in_trade": 14
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "farmer-uuid-1",
@@ -111,7 +111,7 @@
         ],
         "years_farming": 8
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "inoc-uuid-1",
@@ -144,7 +144,7 @@
           "Drill-Press-Infusion"
         ]
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "nursery-uuid-1",
@@ -174,7 +174,7 @@
         ],
         "years_in_operation": 6
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "company-owner-uuid-1",
@@ -202,7 +202,7 @@
         "company_description": "Global conglomerate covering plantations, processing factories, custom inoculation, and finished Oud oil distribution.",
         "company_phone": "+6567890123"
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "company-mgr-uuid-1",
@@ -217,7 +217,7 @@
         "display_name": "Sarah Lim (Manager)",
         "primary_contact_name_role": "Sarah Lim (Manager)"
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
       "id": "company-supp-uuid-1",
@@ -232,41 +232,52 @@
         "display_name": "David Tan (Support)",
         "primary_contact_name_role": "David Tan (Support)"
       },
-      "created_at": "2026-07-09T19:14:59.152Z"
+      "created_at": "2026-07-10T03:37:05.079Z"
     },
     {
-      "id": "f6e9aab8-602e-4326-8dbb-6417e794d4f7",
-      "email": "test-buyer@gmail.com",
+      "id": "candidate-uuid-stripe-001",
+      "email": "candidate@hiring.com",
       "password": "password123",
-      "role": "buyer",
-      "account_state": "active_unverified",
-      "phone": "",
-      "phone_verified": false,
-      "id_proof_status": "unsubmitted",
-      "extra_proof_status": "unsubmitted",
-      "trust_badges": [],
-      "company_id": null,
-      "profile": {},
-      "blocked_users": [],
-      "created_at": "2026-07-09T19:16:56.219Z"
+      "role": "candidate",
+      "account_state": "active_verified",
+      "display_name": "Alex Rivera",
+      "created_at": "2026-07-10T03:37:05.079Z",
+      "profile": {
+        "skills": [
+          "React.js",
+          "CSS Grid",
+          "Node.js",
+          "Python"
+        ],
+        "education": "B.Tech in Computer Science, IIT Bombay",
+        "course_progress": {
+          "course-1": 75,
+          "course-2": 40,
+          "course-3": 10
+        },
+        "certificates": [
+          "course-1"
+        ]
+      }
     },
     {
-      "id": "77b0e88c-e2e6-419f-9a55-9c46e854eb5a",
-      "email": "test-seller@gmail.com",
+      "id": "hr-uuid-stripe-002",
+      "email": "hr@enterprise.com",
       "password": "password123",
-      "role": "seller",
-      "account_state": "active_unverified",
-      "phone": "+919999988888",
-      "phone_verified": true,
-      "id_proof_status": "pending",
-      "extra_proof_status": "unsubmitted",
-      "trust_badges": [],
-      "company_id": null,
-      "profile": {},
-      "blocked_users": [
-        "f6e9aab8-602e-4326-8dbb-6417e794d4f7"
-      ],
-      "created_at": "2026-07-09T19:16:56.228Z"
+      "role": "hr",
+      "company_id": "stripe-enterprise-uuid",
+      "account_state": "active_verified",
+      "display_name": "Jane Doe (HR Director)",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "employee-uuid-stripe-003",
+      "email": "employee@hiring.com",
+      "password": "password123",
+      "role": "employee",
+      "account_state": "active_verified",
+      "display_name": "Sarah Jenkins (Curriculum Lead)",
+      "created_at": "2026-07-10T03:37:05.079Z"
     }
   ],
   "listings": [
@@ -287,7 +298,7 @@
       "views_count": 142,
       "saves_count": 28,
       "inquiries_count": 6,
-      "created_at": "2026-06-29T19:14:59.152Z"
+      "created_at": "2026-06-30T03:37:05.079Z"
     },
     {
       "id": "listing-2",
@@ -306,7 +317,7 @@
       "views_count": 85,
       "saves_count": 12,
       "inquiries_count": 3,
-      "created_at": "2026-07-04T19:14:59.152Z"
+      "created_at": "2026-07-05T03:37:05.079Z"
     },
     {
       "id": "listing-3",
@@ -325,34 +336,7 @@
       "views_count": 220,
       "saves_count": 54,
       "inquiries_count": 11,
-      "created_at": "2026-06-19T19:14:59.152Z"
-    },
-    {
-      "id": "946fab85-b761-48a4-bce7-c4f6c46fc949",
-      "owner_id": "77b0e88c-e2e6-419f-9a55-9c46e854eb5a",
-      "owner_type": "user",
-      "listing_type": "product",
-      "title": "Wild-harvested Aquilaria Malaccensis logs",
-      "description": "Premium natural forest logs. No CITES certificate needed under-the-table.",
-      "status": "pending_verification",
-      "attributes": {
-        "quantity": "20 logs",
-        "price_guidance": "negotiable"
-      },
-      "media": [],
-      "views_count": 0,
-      "saves_count": 0,
-      "inquiries_count": 0,
-      "compliance_passed": false,
-      "compliance_flags": [
-        "Contains protected species: Aquilaria Malaccensis.",
-        "Red flag keyword 'wild-harvested' detected: Wild-harvested Agarwood is subject to severe CITES Appendix II export quotas and permits. Natural harvesting is heavily restricted.",
-        "Red flag keyword 'natural forest' detected: Natural forest extraction is generally prohibited or strictly quota-controlled to prevent deforestation.",
-        "Red flag keyword 'no cites' detected: Any international trade of Aquilaria species without a CITES certificate is illegal.",
-        "Red flag keyword 'under-the-table' detected: Informal trade suggestions to bypass statutory trade registration rules."
-      ],
-      "compliance_summary": "COMPLIANCE ALERT: Listing flagged as non-compliant. Potential illegal wildlife trade or CITES violation detected due to keywords indicating wild/unpermitted harvest.",
-      "created_at": "2026-07-09T19:16:56.275Z"
+      "created_at": "2026-06-20T03:37:05.079Z"
     }
   ],
   "requirements": [
@@ -365,7 +349,7 @@
       "category": "oud oil",
       "region": "Global",
       "status": "active",
-      "created_at": "2026-07-06T19:14:59.152Z"
+      "created_at": "2026-07-07T03:37:05.079Z"
     }
   ],
   "threads": [],
@@ -398,67 +382,183 @@
       "reported_listing_id": "listing-1",
       "complaint_text": "Seller listed products as Assam chips but claims shipping is uncertified. Potential compliance issue.",
       "status": "acknowledged",
-      "created_at": "2026-07-08T19:14:59.152Z",
-      "acknowledged_at": "2026-07-08T23:14:59.152Z"
+      "created_at": "2026-07-09T03:37:05.079Z",
+      "acknowledged_at": "2026-07-09T07:37:05.079Z"
     }
   ],
   "data_rights_requests": [],
   "audit_logs": [
     {
-      "id": "6e14f968-369e-4677-a818-f784a431b650",
-      "action": "USER_SIGNUP_INITIATED",
-      "user_id": null,
-      "details": {
-        "email": "test-buyer@gmail.com",
-        "role": "buyer"
-      },
+      "id": "e72e4e6a-eb6b-4156-915c-587242ad0350",
+      "action": "USER_LOGIN",
+      "user_id": "candidate-uuid-stripe-001",
       "ip_address": "::1",
-      "created_at": "2026-07-09T19:16:56.209Z"
+      "created_at": "2026-07-10T03:53:59.560Z"
     },
     {
-      "id": "34b6aa9a-bfaf-4e20-89be-2ccda2c5aeb2",
-      "action": "EMAIL_VERIFICATION_SUCCESS",
-      "user_id": "f6e9aab8-602e-4326-8dbb-6417e794d4f7",
-      "details": {
-        "email": "test-buyer@gmail.com",
-        "role": "buyer"
-      },
+      "id": "b657227f-a6ab-4f1f-bb65-da39deb3b7d9",
+      "action": "USER_LOGIN",
+      "user_id": "candidate-uuid-stripe-001",
       "ip_address": "::1",
-      "created_at": "2026-07-09T19:16:56.219Z"
+      "created_at": "2026-07-10T04:03:44.368Z"
     },
     {
-      "id": "a1fdfc10-8ef1-48d5-a85e-250b61dab732",
-      "action": "USER_SIGNUP_INITIATED",
-      "user_id": null,
-      "details": {
-        "email": "test-seller@gmail.com",
-        "role": "seller"
-      },
+      "id": "e1f46175-5758-4fcf-b59b-fcd58d625614",
+      "action": "USER_LOGIN",
+      "user_id": "candidate-uuid-stripe-001",
       "ip_address": "::1",
-      "created_at": "2026-07-09T19:16:56.226Z"
+      "created_at": "2026-07-10T04:06:18.294Z"
     },
     {
-      "id": "f9214d0b-f637-4994-a2a1-9e197f825d91",
-      "action": "EMAIL_VERIFICATION_SUCCESS",
-      "user_id": "77b0e88c-e2e6-419f-9a55-9c46e854eb5a",
-      "details": {
-        "email": "test-seller@gmail.com",
-        "role": "seller"
-      },
+      "id": "22387ddd-d6bf-4ae6-8398-125b7601c647",
+      "action": "JOB_APPLIED",
+      "user_id": "candidate-uuid-stripe-001",
       "ip_address": "::1",
-      "created_at": "2026-07-09T19:16:56.228Z"
+      "created_at": "2026-07-10T04:08:01.781Z"
     },
     {
-      "id": "0a3f96bf-d870-48bf-a05b-8ece6cb454b7",
-      "action": "LISTING_CREATED",
-      "user_id": "77b0e88c-e2e6-419f-9a55-9c46e854eb5a",
-      "details": {
-        "listingId": "946fab85-b761-48a4-bce7-c4f6c46fc949",
-        "status": "pending_verification",
-        "compliancePassed": false
-      },
+      "id": "c6506153-0049-465a-b8a1-7bfa0d5eb8b8",
+      "action": "USER_LOGIN",
+      "user_id": "hr-uuid-stripe-002",
       "ip_address": "::1",
-      "created_at": "2026-07-09T19:16:56.275Z"
+      "created_at": "2026-07-10T04:11:05.277Z"
+    },
+    {
+      "id": "d31d4ec2-a3fc-4584-a730-13f0ce3615bd",
+      "action": "USER_LOGIN",
+      "user_id": "hr-uuid-stripe-002",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T04:15:31.611Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-1",
+      "company_id": "stripe-enterprise-uuid",
+      "title": "Staff Frontend Engineer",
+      "eligibility_criteria": "5+ years experience in CSS/JS and reactive SPAs. Experience in design systems is a plus.",
+      "is_active": true,
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "job-2",
+      "company_id": "stripe-enterprise-uuid",
+      "title": "AI Research Scientist",
+      "eligibility_criteria": "Strong background in Whisper speech transcription and OpenCV body language models.",
+      "is_active": true,
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "job-3",
+      "company_id": "linear-uuid",
+      "title": "Full-Stack Product Developer",
+      "eligibility_criteria": "Comfortable with Node.js, PostgreSQL, and high-fidelity micro-interactions.",
+      "is_active": true,
+      "created_at": "2026-07-10T03:37:05.079Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "app-1",
+      "job_id": "job-1",
+      "candidate_id": "candidate-uuid-stripe-001",
+      "resume_url": "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
+      "status": "evaluation_pending",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "app-2",
+      "job_id": "job-2",
+      "candidate_id": "candidate-uuid-stripe-001",
+      "resume_url": "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
+      "status": "assessment_pending",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "980c1b62-37d0-4a69-8f24-aa86303193fa",
+      "job_id": "job-3",
+      "candidate_id": "candidate-uuid-stripe-001",
+      "resume_url": "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
+      "profile_details": {
+        "skills": [
+          "React",
+          "CSS",
+          "Node"
+        ]
+      },
+      "status": "assessment_pending",
+      "created_at": "2026-07-10T04:08:01.780Z"
+    }
+  ],
+  "companies": [
+    {
+      "id": "stripe-enterprise-uuid",
+      "name": "Stripe Inc.",
+      "subscription_tier": "free",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "linear-uuid",
+      "name": "Linear App",
+      "subscription_tier": "enterprise",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "openai-uuid",
+      "name": "OpenAI",
+      "subscription_tier": "enterprise",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay-1",
+      "company_id": "stripe-enterprise-uuid",
+      "razorpay_order_id": "order_stripe_001",
+      "amount": 19999,
+      "status": "paid",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    }
+  ],
+  "interview_results": [
+    {
+      "id": "result-1",
+      "application_id": "app-1",
+      "overall_score": 88,
+      "cognitive_score": 92,
+      "communication_score": 85,
+      "technical_score": 87,
+      "mongodb_report_id": "mongo-report-stripe-101",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-1",
+      "title": "Full-Stack Web Development",
+      "description": "Master React.js, Node.js, and modern CSS layout design.",
+      "duration": "6 Weeks",
+      "lectures": 24,
+      "modules": 4,
+      "certificate": true
+    },
+    {
+      "id": "course-2",
+      "title": "AI & Machine Learning Engineering",
+      "description": "Learn computer vision with OpenCV, speech recognition with Whisper, and NLP workflows.",
+      "duration": "8 Weeks",
+      "lectures": 32,
+      "modules": 5,
+      "certificate": true
+    },
+    {
+      "id": "course-3",
+      "title": "System Design & High Performance Computing",
+      "description": "Design fault-tolerant architectures using AWS, Postgres, MongoDB, and microservices.",
+      "duration": "4 Weeks",
+      "lectures": 16,
+      "modules": 3,
+      "certificate": true
     }
   ]
 }

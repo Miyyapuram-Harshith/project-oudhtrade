@@ -8,6 +8,10 @@ import listingsRouter from './routes/listings.js';
 import requirementsRouter from './routes/requirements.js';
 import messagingRouter from './routes/messaging.js';
 import internalRouter from './routes/internal.js';
+import jobsRouter from './routes/jobs.js';
+import coursesRouter from './routes/courses.js';
+import aiRouter from './routes/ai.js';
+import billingRouter from './routes/billing.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,6 +34,10 @@ app.use('/api/v1/listings', listingsRouter);
 app.use('/api/v1/requirements', requirementsRouter);
 app.use('/api/v1/messaging', messagingRouter);
 app.use('/api/v1/internal', internalRouter);
+app.use('/api/v1/jobs', jobsRouter);
+app.use('/api/v1/courses', coursesRouter);
+app.use('/api/v1/ai', aiRouter);
+app.use('/api/v1/billing', billingRouter);
 
 // Serve static Single Page Application files
 app.use(express.static(path.join(__dirname, 'public')));
