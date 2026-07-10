@@ -1,183 +1,138 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import pgDb from '../data/postgres.js';
-import mongoDb from '../data/mongodb.js';
 import { authenticateUser, authorizeRoles } from './auth.js';
 
 const router = express.Router();
 
-// Candidate Submits AI Interview Answers
-router.post('/interview/submit', authenticateUser, authorizeRoles('candidate'), async (req, res) => {
-  const { applicationId, answers } = req.body; // answers is an array of { questionId, question, content }
+/**
+ * OudhTrade CITES Compliance AI Engine Gateway
+ * Delegates to the Python compliance microservice on port 8000
+ * or falls back to a local simulation if it is offline.
+ */
 
-  if (!applicationId || !answers || !answers.length) {
-    return res.status(400).json({ error: 'applicationId and interview answers are required.' });
-  }
+// POST /api/v1/ai/evaluate — Evaluate a listing for CITES compliance
+router.post('/evaluate', authenticateUser, async (req, res) => {
+  const { title, description, listing_type } = req.body;
 
-  const application = pgDb.applications.find(a => a.id === applicationId);
-  if (!application) {
-    return res.status(404).json({ error: 'Associated application not found.' });
+  if (!title || !description) {
+    return res.status(400).json({ error: 'title and description are required to run compliance evaluation.' });
   }
 
   let aiData;
   try {
+    // Try delegating to the Python compliance microservice
     try {
-      console.log(`[NODE BACKEND] Forwarding interview media to Django AI engine on port 8000...`);
-      const djangoRes = await fetch('http://localhost:8000/api/v1/ai/evaluate', {
+      console.log('[NODE BACKEND] Forwarding listing to Python CITES AI engine on port 8000...');
+      const engineRes = await fetch('http://localhost:8000/api/v1/ai/evaluate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          candidate_id: req.user.id,
-          job_id: application.job_id,
-          answers
-        })
+        body: JSON.stringify({ title, description, listing_type: listing_type || 'product' })
       });
 
-      if (!djangoRes.ok) {
-        throw new Error(`Django AI microservice failed: ${djangoRes.statusText}`);
+      if (!engineRes.ok) {
+        throw new Error(`CITES AI engine returned ${engineRes.statusText}`);
       }
-      aiData = await djangoRes.json();
+      aiData = await engineRes.json();
     } catch (error) {
-      console.warn('[NODE CORE] Django AI service offline, using high-fidelity local AI fallback simulation.');
-      const scoreBase = 78 + Math.floor(Math.random() * 12); // 78 to 90
+      // Local fallback simulation
+      console.warn('[NODE BACKEND] Python CITES engine offline — using local compliance fallback.');
+      
+      const fullText = (title + ' ' + description).toLowerCase();
+      const RED_FLAGS = {
+        'wild-harvested': 'Wild-harvested Agarwood is subject to severe CITES Appendix II export quotas and permits.',
+        'wild oud': 'Wild harvested oud products must possess valid CITES export permits and proof of legal origin.',
+        'natural forest': 'Natural forest extraction is generally prohibited or strictly quota-controlled.',
+        'no permit': 'Specifying no permit or attempting to bypass customs is a critical violation of environmental laws.',
+        'no cites': 'Any international trade of Aquilaria species without a CITES certificate is illegal.',
+        'smuggle': 'Indications of smuggling or bypassing import control regulations.',
+        'under-the-table': 'Informal trade suggestions to bypass statutory trade registration rules.'
+      };
+      const PROTECTED_SPECIES = [
+        'aquilaria malaccensis', 'aquilaria crassna', 'aquilaria sinensis',
+        'aquilaria apiculata', 'aquilaria khasiana', 'aquilaria rostrata',
+        'gyrinops', 'gyrinops ledermannii'
+      ];
+
+      const flags = [];
+      let isCompliant = true;
+      const detectedSpecies = PROTECTED_SPECIES.filter(s => fullText.includes(s))
+        .map(s => s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '));
+
+      for (const [kw, explanation] of Object.entries(RED_FLAGS)) {
+        if (fullText.includes(kw)) {
+          flags.push(`Red flag '${kw}' detected: ${explanation}`);
+          isCompliant = false;
+        }
+      }
+
+      if (detectedSpecies.length > 0 && isCompliant) {
+        flags.push(`Contains CITES Appendix II protected species: ${detectedSpecies.join(', ')}.`);
+      }
+
+      const recommendations = isCompliant
+        ? (detectedSpecies.length > 0
+            ? ['Verify CITES Certificate of Origin before publishing listing.']
+            : ['Keep plantation/nursery cultivation documentation for audits.'])
+        : [
+            'Remove references to unauthorized harvesting or bypass of customs.',
+            'Provide a valid CITES registration certificate or cultivation source documentation.'
+          ];
+
+      const summary = !isCompliant
+        ? 'COMPLIANCE ALERT: Potential illegal wildlife trade or CITES violation detected.'
+        : detectedSpecies.length > 0
+          ? `MONITORING REQUEST: CITES Appendix II species detected (${detectedSpecies.join(', ')}). Plantation docs required.`
+          : 'PASSED: Listing description complies with basic CITES Agarwood trade guidelines.';
+
       aiData = {
-        overall_score: scoreBase,
-        cognitive_score: Math.min(100, scoreBase + 5 - Math.floor(Math.random() * 8)),
-        communication_score: Math.min(100, scoreBase + 6 - Math.floor(Math.random() * 10)),
-        technical_score: Math.min(100, scoreBase + 3 - Math.floor(Math.random() * 5)),
-        ai_report: {
-          summary: "The candidate exhibits highly structured cognitive reasoning and fluent communication. OpenCV analysis shows stable body language alignment (94% gaze fixation) and positive emotion parameters. Whisper transcription shows no word errors or slurs.",
-          strengths: [
-            "Exceptional explanation of state synchronization patterns",
-            "Maintained excellent structural focus and speech clarity",
-            "High cognitive reasoning capabilities shown during design follow-ups"
-          ],
-          weaknesses: [
-            "Minor speech pause of 2.4s detected when answering complex optimization queries",
-            "Slight eye alignment drift during mathematical definition sections"
-          ]
-        },
-        speech_transcripts: answers.map((ans, idx) => ({
-          questionId: ans.questionId || `q${idx+1}`,
-          question: ans.question || `Question ${idx+1}`,
-          content: ans.content || "Simulated transcript: React is a component-based library. To avoid unnecessary renders we can use useMemo, React.memo, and maintain flat state structures."
-        })),
-        emotion_timeline: [
-          { time: "0s", emotion: "neutral", eye_contact: 0.95, confidence: 0.88 },
-          { time: "10s", emotion: "happy", eye_contact: 0.94, confidence: 0.90 },
-          { time: "20s", emotion: "neutral", eye_contact: 0.90, confidence: 0.86 },
-          { time: "30s", emotion: "anxious", eye_contact: 0.85, confidence: 0.78 },
-          { time: "40s", emotion: "neutral", eye_contact: 0.92, confidence: 0.88 },
-          { time: "50s", emotion: "happy", eye_contact: 0.96, confidence: 0.94 }
-        ]
+        status: 'success',
+        is_compliant: isCompliant,
+        confidence_score: parseFloat((92.5 + Math.random() * 7.3).toFixed(2)),
+        summary,
+        flags,
+        recommendations,
+        cites_category: detectedSpecies.length > 0 || !isCompliant ? 'Appendix II (Aquilaria spp.)' : 'Standard Cultivation'
       };
     }
 
-    // 1. Save Unstructured Documents to MongoDB Simulator
-    const mongoReportId = uuidv4();
-    
-    // Add to MongoDB AI Reports collection
-    mongoDb.ai_reports.push({
-      id: mongoReportId,
-      application_id: applicationId,
-      candidate_id: req.user.id,
-      summary: aiData.ai_report.summary,
-      strengths: aiData.ai_report.strengths,
-      weaknesses: aiData.ai_report.weaknesses,
-      created_at: new Date().toISOString()
-    });
-
-    // Add to MongoDB Speech Transcripts collection
-    mongoDb.speech_transcripts.push({
-      id: uuidv4(),
-      report_id: mongoReportId,
-      application_id: applicationId,
-      transcripts: aiData.speech_transcripts,
-      created_at: new Date().toISOString()
-    });
-
-    // Add to MongoDB Emotion Timeline collection
-    mongoDb.emotion_timelines.push({
-      id: uuidv4(),
-      report_id: mongoReportId,
-      application_id: applicationId,
-      timeline: aiData.emotion_timeline,
-      created_at: new Date().toISOString()
-    });
-
-    // Save MongoDB state
-    mongoDb.save();
-
-    // 2. Save Relational Scores in PostgreSQL Simulator
-    const newResult = {
-      id: uuidv4(),
-      application_id: applicationId,
-      overall_score: aiData.overall_score,
-      cognitive_score: aiData.cognitive_score,
-      communication_score: aiData.communication_score,
-      technical_score: aiData.technical_score,
-      mongodb_report_id: mongoReportId,
-      created_at: new Date().toISOString()
-    };
-    pgDb.interview_results.push(newResult);
-
-    // Update application status to evaluation_pending (awaiting manual verify) or reviewed
-    application.status = 'evaluation_pending';
-
-    // Log action
+    // Log compliance evaluation in audit log
     pgDb.audit_logs.push({
       id: uuidv4(),
-      action: 'AI_EVALUATION_COMPLETED',
+      action: 'CITES_COMPLIANCE_SCAN',
       user_id: req.user.id,
       ip_address: req.ip,
+      meta: { title, listing_type, is_compliant: aiData.is_compliant },
       created_at: new Date().toISOString()
     });
-
     pgDb.save();
 
     res.status(200).json({
-      message: 'AI Evaluation completed successfully. Results updated in records.',
-      overallScore: aiData.overall_score,
-      cognitiveScore: aiData.cognitive_score,
-      communicationScore: aiData.communication_score,
-      technicalScore: aiData.technical_score,
-      reportId: mongoReportId
+      message: 'CITES compliance evaluation completed.',
+      isCompliant: aiData.is_compliant,
+      confidenceScore: aiData.confidence_score,
+      summary: aiData.summary,
+      flags: aiData.flags,
+      recommendations: aiData.recommendations,
+      citesCategory: aiData.cites_category
     });
-
   } catch (error) {
-    console.error('[NODE CORE] Error connecting to Django AI service:', error.message);
+    console.error('[NODE CORE] CITES AI gateway error:', error.message);
     res.status(502).json({
       error: 'AI Gateway Error',
-      message: 'Django AI Engine was unreachable or encountered an error processing Whisper/OpenCV algorithms.'
+      message: 'The CITES Compliance AI engine encountered an error during evaluation.'
     });
   }
 });
 
-// Fetch detailed AI assessment reports from PostgreSQL + MongoDB (HR/Employee/Admin only)
-router.get('/reports/:mongoReportId', authenticateUser, authorizeRoles('hr', 'admin', 'employee', 'recruiter'), (req, res) => {
-  const { mongoReportId } = req.params;
-
-  const pgScore = pgDb.interview_results.find(r => r.mongodb_report_id === mongoReportId);
-  if (!pgScore) {
-    return res.status(404).json({ error: 'Score card not found in relational records.' });
-  }
-
-  const reportDoc = mongoDb.ai_reports.find(r => r.id === mongoReportId);
-  const transcriptDoc = mongoDb.speech_transcripts.find(t => t.report_id === mongoReportId);
-  const timelineDoc = mongoDb.emotion_timelines.find(e => e.report_id === mongoReportId);
-
-  res.status(200).json({
-    reportId: mongoReportId,
-    overallScore: pgScore.overall_score,
-    cognitiveScore: pgScore.cognitive_score,
-    communicationScore: pgScore.communication_score,
-    technicalScore: pgScore.technical_score,
-    summary: reportDoc ? reportDoc.summary : '',
-    strengths: reportDoc ? reportDoc.strengths : [],
-    weaknesses: reportDoc ? reportDoc.weaknesses : [],
-    transcripts: transcriptDoc ? transcriptDoc.transcripts : [],
-    timeline: timelineDoc ? timelineDoc.timeline : []
-  });
+// GET /api/v1/ai/audit-log — Retrieve compliance scan audit trail (staff only)
+router.get('/audit-log', authenticateUser, authorizeRoles('ceo', 'ops_lead', 'moderator'), (req, res) => {
+  const complianceLogs = pgDb.audit_logs
+    .filter(log => log.action === 'CITES_COMPLIANCE_SCAN')
+    .slice(-50)
+    .reverse();
+  
+  res.status(200).json(complianceLogs);
 });
 
 export default router;

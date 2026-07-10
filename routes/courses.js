@@ -1,21 +1,41 @@
+/**
+ * OudhTrade — Courses/Academy Module (Reserved for Future Use)
+ * 
+ * Future OudhTrade Academy will include educational content on:
+ * - CITES compliance for agarwood trading
+ * - Aquilaria species cultivation techniques  
+ * - International export documentation
+ * - Agarwood quality grading standards
+ */
 import express from 'express';
-import pgDb from '../data/postgres.js';
-import { authenticateUser } from './auth.js';
-
 const router = express.Router();
 
-// Fetch learning courses catalog
-router.get('/', authenticateUser, (req, res) => {
-  res.status(200).json(pgDb.courses);
-});
-
-// Fetch specific course lessons
-router.get('/:id', authenticateUser, (req, res) => {
-  const course = pgDb.courses.find(c => c.id === req.params.id);
-  if (!course) {
-    return res.status(404).json({ error: 'Course not found.' });
+// Placeholder educational content
+const placeholderCourses = [
+  {
+    id: 'course-cites-101',
+    title: 'CITES Appendix II: Agarwood Trade Compliance',
+    description: 'Understanding CITES regulations for Aquilaria and Gyrinops genus trade.',
+    category: 'Regulatory Compliance',
+    available: false,
+    coming_soon: true
+  },
+  {
+    id: 'course-aquilaria-201',
+    title: 'Aquilaria Plantation Best Practices',
+    description: 'Sustainable cultivation and inoculation techniques for premium agarwood yield.',
+    category: 'Cultivation Science',
+    available: false,
+    coming_soon: true
   }
-  res.status(200).json(course);
+];
+
+// GET /api/v1/courses — list upcoming educational content
+router.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'OudhTrade Academy is coming soon.',
+    courses: placeholderCourses
+  });
 });
 
 export default router;

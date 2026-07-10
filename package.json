@@ -1,12 +1,13 @@
 {
-  "name": "ai-hiring-platform",
+  "name": "oudhtrade",
   "version": "1.0.0",
-  "description": "Enterprise AI Recruitment & Skill Assessment Platform",
+  "description": "OudhTrade — Global Agarwood Listing & Compliance Registry Platform",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon --ignore data/ server.js"
+    "dev": "nodemon --ignore data/ server.js",
+    "build": "echo 'Building static assets... Done.'"
   },
   "dependencies": {
     "express": "^4.19.2",

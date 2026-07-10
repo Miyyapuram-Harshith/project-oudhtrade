@@ -429,8 +429,84 @@
       "user_id": "hr-uuid-stripe-002",
       "ip_address": "::1",
       "created_at": "2026-07-10T04:15:31.611Z"
+    },
+    {
+      "id": "b61b4822-42af-4037-9783-93b654429fe0",
+      "action": "USER_LOGIN",
+      "user_id": "staff-ceo-uuid",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T07:37:13.627Z"
+    },
+    {
+      "id": "65b1a3a0-8025-4fb1-8227-f40136d1da9d",
+      "action": "USER_LOGIN",
+      "user_id": "staff-ceo-uuid",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T07:37:26.819Z"
+    },
+    {
+      "id": "93e3ccb3-ae42-414d-999e-58390ef73f92",
+      "action": "CITES_COMPLIANCE_SCAN",
+      "user_id": "staff-ceo-uuid",
+      "ip_address": "::1",
+      "meta": {
+        "title": "Premium Assam Oud Chips",
+        "listing_type": "product",
+        "is_compliant": true
+      },
+      "created_at": "2026-07-10T07:37:37.744Z"
+    },
+    {
+      "id": "97d38837-a55e-449c-97f3-98d124def870",
+      "action": "USER_LOGIN",
+      "user_id": "seller-uuid-1",
+      "ip_address": "::1",
+      "created_at": "2026-07-10T07:39:45.715Z"
+    },
+    {
+      "id": "f13b3de8-412b-424e-8626-a55782dc9f1d",
+      "action": "CITES_COMPLIANCE_SCAN",
+      "user_id": "seller-uuid-1",
+      "ip_address": "::1",
+      "meta": {
+        "title": "Wild-harvested natural forest oud chips no permit",
+        "listing_type": "product",
+        "is_compliant": false
+      },
+      "created_at": "2026-07-10T07:48:59.329Z"
     }
   ],
+  "companies": [
+    {
+      "id": "stripe-enterprise-uuid",
+      "name": "Stripe Inc.",
+      "subscription_tier": "free",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "linear-uuid",
+      "name": "Linear App",
+      "subscription_tier": "enterprise",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    },
+    {
+      "id": "openai-uuid",
+      "name": "OpenAI",
+      "subscription_tier": "enterprise",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay-1",
+      "company_id": "stripe-enterprise-uuid",
+      "razorpay_order_id": "order_stripe_001",
+      "amount": 19999,
+      "status": "paid",
+      "created_at": "2026-07-10T03:37:05.079Z"
+    }
+  ],
+  "verification_documents": [],
   "jobs": [
     {
       "id": "job-1",
@@ -488,36 +564,6 @@
       },
       "status": "assessment_pending",
       "created_at": "2026-07-10T04:08:01.780Z"
-    }
-  ],
-  "companies": [
-    {
-      "id": "stripe-enterprise-uuid",
-      "name": "Stripe Inc.",
-      "subscription_tier": "free",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "linear-uuid",
-      "name": "Linear App",
-      "subscription_tier": "enterprise",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    },
-    {
-      "id": "openai-uuid",
-      "name": "OpenAI",
-      "subscription_tier": "enterprise",
-      "created_at": "2026-07-10T03:37:05.079Z"
-    }
-  ],
-  "payments": [
-    {
-      "id": "pay-1",
-      "company_id": "stripe-enterprise-uuid",
-      "razorpay_order_id": "order_stripe_001",
-      "amount": 19999,
-      "status": "paid",
-      "created_at": "2026-07-10T03:37:05.079Z"
     }
   ],
   "interview_results": [

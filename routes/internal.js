@@ -198,6 +198,20 @@ router.post('/compliance/grievances/:id/status', authenticateUser, authorizeRole
   res.status(200).json({ message: `Grievance ticket status updated to ${grievance.status}.`, grievance });
 });
 
+// DPDP / DPO Users List - fetch all registered users for DPO panel management
+router.get('/compliance/dpo/users', authenticateUser, authorizeRoles('ceo', 'ops_lead'), (req, res) => {
+  const users = pgDb.users.map(u => ({
+    id: u.id,
+    email: u.email,
+    role: u.role,
+    id_proof_status: u.id_proof_status,
+    email_verified: u.email_verified,
+    created_at: u.created_at,
+    profile: u.profile || {}
+  }));
+  res.status(200).json(users);
+});
+
 // DPDP / DPO User Data Export request (Access right)
 router.get('/compliance/dpo/export/:userId', authenticateUser, authorizeRoles('ceo', 'ops_lead'), (req, res) => {
   const targetId = req.params.userId;

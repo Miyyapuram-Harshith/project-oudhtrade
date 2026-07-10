@@ -16,21 +16,16 @@ const defaultDb = {
   grievances: [],
   data_rights_requests: [],
   audit_logs: [],
-  jobs: [],
-  applications: [],
   companies: [],
   payments: [],
-  interview_results: [],
-  courses: []
+  verification_documents: []
 };
 
 // Seed initial system data for testing
 const seedDatabase = (db) => {
   const needsReseed = !db.users || 
                       db.users.length === 0 || 
-                      !db.users.some(u => u.email === "hr@enterprise.com") ||
-                      !db.jobs ||
-                      db.jobs.length === 0;
+                      !db.users.some(u => u.email === "ceo@oudhtrade.com");
 
   if (needsReseed) {
     db.users = [];
@@ -42,12 +37,9 @@ const seedDatabase = (db) => {
     db.grievances = [];
     db.data_rights_requests = [];
     db.audit_logs = [];
-    db.jobs = [];
-    db.applications = [];
     db.companies = [];
     db.payments = [];
-    db.interview_results = [];
-    db.courses = [];
+    db.verification_documents = [];
 
     // Seed 1: Staff / Internal Users
     // CEO (Super Admin)
@@ -369,156 +361,11 @@ const seedDatabase = (db) => {
       acknowledged_at: new Date(Date.now() - 20 * 60 * 60 * 1000).toISOString()
     });
 
-    // Seed 6: AI Hiring Platform Companies
+    // Seed 6: OudhTrade Company Profiles (Corporate accounts subscription tier)
     db.companies.push({
-      id: "stripe-enterprise-uuid",
-      name: "Stripe Inc.",
-      subscription_tier: "free",
-      created_at: new Date().toISOString()
-    }, {
-      id: "linear-uuid",
-      name: "Linear App",
+      id: "agarcorp-company-uuid",
+      name: "AgarCorp International Pte Ltd",
       subscription_tier: "enterprise",
-      created_at: new Date().toISOString()
-    }, {
-      id: "openai-uuid",
-      name: "OpenAI",
-      subscription_tier: "enterprise",
-      created_at: new Date().toISOString()
-    });
-
-    // Seed 7: AI Hiring Platform Users
-    // Candidate User
-    db.users.push({
-      id: "candidate-uuid-stripe-001",
-      email: "candidate@hiring.com",
-      password: "password123",
-      role: "candidate",
-      account_state: "active_verified",
-      display_name: "Alex Rivera",
-      created_at: new Date().toISOString(),
-      profile: {
-        skills: ["React.js", "CSS Grid", "Node.js", "Python"],
-        education: "B.Tech in Computer Science, IIT Bombay",
-        course_progress: {
-          "course-1": 75,
-          "course-2": 40,
-          "course-3": 10
-        },
-        certificates: ["course-1"]
-      }
-    });
-
-    // HR Manager User
-    db.users.push({
-      id: "hr-uuid-stripe-002",
-      email: "hr@enterprise.com",
-      password: "password123",
-      role: "hr",
-      company_id: "stripe-enterprise-uuid",
-      account_state: "active_verified",
-      display_name: "Jane Doe (HR Director)",
-      created_at: new Date().toISOString()
-    });
-
-    // Employee / Team Lead User
-    db.users.push({
-      id: "employee-uuid-stripe-003",
-      email: "employee@hiring.com",
-      password: "password123",
-      role: "employee",
-      account_state: "active_verified",
-      display_name: "Sarah Jenkins (Curriculum Lead)",
-      created_at: new Date().toISOString()
-    });
-
-    // Seed 8: AI Hiring Platform Courses
-    db.courses.push({
-      id: "course-1",
-      title: "Full-Stack Web Development",
-      description: "Master React.js, Node.js, and modern CSS layout design.",
-      duration: "6 Weeks",
-      lectures: 24,
-      modules: 4,
-      certificate: true
-    }, {
-      id: "course-2",
-      title: "AI & Machine Learning Engineering",
-      description: "Learn computer vision with OpenCV, speech recognition with Whisper, and NLP workflows.",
-      duration: "8 Weeks",
-      lectures: 32,
-      modules: 5,
-      certificate: true
-    }, {
-      id: "course-3",
-      title: "System Design & High Performance Computing",
-      description: "Design fault-tolerant architectures using AWS, Postgres, MongoDB, and microservices.",
-      duration: "4 Weeks",
-      lectures: 16,
-      modules: 3,
-      certificate: true
-    });
-
-    // Seed 9: AI Hiring Platform Jobs
-    db.jobs.push({
-      id: "job-1",
-      company_id: "stripe-enterprise-uuid",
-      title: "Staff Frontend Engineer",
-      eligibility_criteria: "5+ years experience in CSS/JS and reactive SPAs. Experience in design systems is a plus.",
-      is_active: true,
-      created_at: new Date().toISOString()
-    }, {
-      id: "job-2",
-      company_id: "stripe-enterprise-uuid",
-      title: "AI Research Scientist",
-      eligibility_criteria: "Strong background in Whisper speech transcription and OpenCV body language models.",
-      is_active: true,
-      created_at: new Date().toISOString()
-    }, {
-      id: "job-3",
-      company_id: "linear-uuid",
-      title: "Full-Stack Product Developer",
-      eligibility_criteria: "Comfortable with Node.js, PostgreSQL, and high-fidelity micro-interactions.",
-      is_active: true,
-      created_at: new Date().toISOString()
-    });
-
-    // Seed 10: AI Hiring Platform Applications
-    db.applications.push({
-      id: "app-1",
-      job_id: "job-1",
-      candidate_id: "candidate-uuid-stripe-001",
-      resume_url: "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
-      status: "evaluation_pending",
-      created_at: new Date().toISOString()
-    }, {
-      id: "app-2",
-      job_id: "job-2",
-      candidate_id: "candidate-uuid-stripe-001",
-      resume_url: "https://assets.hiringplatform.com/resumes/alex_rivera_cv.pdf",
-      status: "assessment_pending",
-      created_at: new Date().toISOString()
-    });
-
-    // Seed 11: AI Hiring Platform Interview Results
-    db.interview_results.push({
-      id: "result-1",
-      application_id: "app-1",
-      overall_score: 88,
-      cognitive_score: 92,
-      communication_score: 85,
-      technical_score: 87,
-      mongodb_report_id: "mongo-report-stripe-101",
-      created_at: new Date().toISOString()
-    });
-
-    // Seed 12: AI Hiring Platform Payments
-    db.payments.push({
-      id: "pay-1",
-      company_id: "stripe-enterprise-uuid",
-      razorpay_order_id: "order_stripe_001",
-      amount: 19999.00,
-      status: "paid",
       created_at: new Date().toISOString()
     });
   }
@@ -570,12 +417,14 @@ class RelationalDatabase {
   get grievances() { return this.data.grievances; }
   get data_rights_requests() { return this.data.data_rights_requests; }
   get audit_logs() { return this.data.audit_logs; }
-  get jobs() { return this.data.jobs; }
-  get applications() { return this.data.applications; }
   get companies() { return this.data.companies; }
   get payments() { return this.data.payments; }
-  get interview_results() { return this.data.interview_results; }
-  get courses() { return this.data.courses; }
+  get verification_documents() { return this.data.verification_documents || []; }
+
+  // Setters for mutable array operations
+  set listings(val) { this.data.listings = val; }
+  set requirements(val) { this.data.requirements = val; }
+  set users(val) { this.data.users = val; }
 }
 
 const pgDb = new RelationalDatabase();

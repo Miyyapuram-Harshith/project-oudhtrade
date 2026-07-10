@@ -1,8 +1,8 @@
 node_modules/
 .env
-.env.*
-npm-debug.log*
-.DS_Store
-coverage/
+.env.local
 dist/
 build/
+coverage/
+*.log
+.DS_Store

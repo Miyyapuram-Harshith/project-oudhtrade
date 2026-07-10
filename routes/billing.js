@@ -5,8 +5,8 @@ import { authenticateUser, authorizeRoles } from './auth.js';
 
 const router = express.Router();
 
-// Request Razorpay Order ID Creation
-router.post('/order', authenticateUser, authorizeRoles('hr', 'admin'), (req, res) => {
+// Request Razorpay Order ID Creation (company accounts only)
+router.post('/order', authenticateUser, authorizeRoles('company'), (req, res) => {
   const { planType, amount } = req.body;
 
   if (!planType || !amount) {
@@ -23,8 +23,8 @@ router.post('/order', authenticateUser, authorizeRoles('hr', 'admin'), (req, res
   });
 });
 
-// Verify signature and upgrade tier
-router.post('/verify', authenticateUser, authorizeRoles('hr', 'admin'), (req, res) => {
+// Verify signature and upgrade corporate tier (company accounts; ops_lead can also manage)
+router.post('/verify', authenticateUser, authorizeRoles('company', 'ceo', 'ops_lead'), (req, res) => {
   const { orderId, paymentId, signature } = req.body;
 
   if (!orderId || !paymentId) {
@@ -66,7 +66,7 @@ router.post('/verify', authenticateUser, authorizeRoles('hr', 'admin'), (req, re
   pgDb.save();
 
   res.status(200).json({
-    message: 'Razorpay payment verification success. Subscription tier upgraded to Enterprise.',
+    message: 'Payment verified. OudhTrade Corporate subscription upgraded to Enterprise tier.',
     company
   });
 });
