@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,18 +11,447 @@
 
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body>
+<body class="">
 
   <!-- Mounting root for client SPA -->
-  <div id="app-root"></div>
+  <div id="app-root">
+    <div class="landing-page-wrapper">
+      <!-- Top Navbar -->
+      <nav class="landing-navbar">
+        <div class="logo-area">
+          <div class="logo-badge">O</div>
+          <span class="brand-title">OudhTrade</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#species" class="nav-link">Species Explorer</a>
+          <a href="#cites-sandbox" class="nav-link">CITES AI Scanner</a>
+          <a href="#directory-preview" class="nav-link">Marketplace</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+          <button class="btn btn-gold" onclick="window.navTo('auth')">Sign In / Register</button>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="landing-hero-section">
+        <div>
+          <span class="hero-tagline">🌿 Premium Agarwood Trading Registry</span>
+          <h1 class="hero-headline">
+            Connecting the World's Elite <br>
+            <span class="gold-text">Agarwood Trade Partners</span>
+          </h1>
+          <p class="hero-description">
+            OudhTrade is the industry's premier global marketplace directory for Aquilaria wood chips, pure oud
+            essential oils, nursery saplings, and expert inoculation services. Built from the ground up for strict CITES
+            Appendix II environmental compliance.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-gold pulse-gold" style="padding:14px 28px; font-size:1rem;"
+              onclick="window.handleExploreDirectory()">Explore Live Registry</button>
+            <a href="#cites-sandbox" class="btn" style="padding:14px 28px; font-size:1rem; text-decoration:none;">Try
+              CITES AI Sandbox</a>
+          </div>
+        </div>
+        <div class="hero-img-container">
+          <div class="hero-img-card">
+            <img src="/premium_oudh_display.png"
+              alt="Premium Oudh Prestige bottle and resinous Agarwood wood chip product photography">
+          </div>
+          <div class="floating-gold-glow"></div>
+        </div>
+      </section>
+
+      <!-- Statistics Banner -->
+      <section class="stats-banner">
+        <div class="stats-banner-inner">
+          <div class="stat-item">
+            <div class="stat-num">$14.2M+</div>
+            <div class="stat-label">Trade Volume Audited</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4,200+</div>
+            <div class="stat-label">Verified Plantations</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Aquilaria Species</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">CITES Compliant Listings</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Features Grid -->
+      <section id="features" class="landing-section">
+        <div class="section-header">
+          <span class="section-tag">Value Proposition</span>
+          <h2 class="section-title">Designed for Global Regulatory Trade</h2>
+          <p class="section-subtitle">
+            We bridge the gap between strict ecological protection rules and international luxury agarwood demand.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-luxury-card">
+            <div class="feature-icon-box">🌍</div>
+            <h3 class="feature-card-title">Symmetric Direct Contact</h3>
+            <p class="feature-card-desc">
+              Any email-verified participant (growers, buyers, nursery owners, specialists) can directly coordinate
+              trade negotiations. Transparent direct networking with no hidden middleman fees.
+            </p>
+          </div>
+          <div class="feature-luxury-card">
+            <div class="feature-icon-box">🛡️</div>
+            <h3 class="feature-card-title">AI CITES Compliance Auditing</h3>
+            <p class="feature-card-desc">
+              Every listing is evaluated by our custom NLP CITES engine to prevent wild-harvested smuggling, enforce
+              correct botanical classifications, and request legal nursery certificates.
+            </p>
+          </div>
+          <div class="feature-luxury-card">
+            <div class="feature-icon-box">🎖️</div>
+            <h3 class="feature-card-title">Double-Layer Identity Verification</h3>
+            <p class="feature-card-desc">
+              All listings require verified business phone numbers and approved national identity credentials. Build
+              unquestionable trust and credibility across borders.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CITES NLP Sandbox Evaluator Tool -->
+      <section id="cites-sandbox" class="landing-section">
+        <div class="section-header">
+          <span class="section-tag">Interactive AI Engine</span>
+          <h2 class="section-title">CITES Compliance NLP Sandbox</h2>
+          <p class="section-subtitle">
+            Simulate our automated compliance scan. Enter a mockup listing description to see how the AI flags risks or
+            identifies species.
+          </p>
+        </div>
+
+        <div class="cites-sandbox-grid">
+          <div class="sandbox-form-column">
+            <div>
+              <h3
+                style="font-family:var(--font-display); font-size:1.3rem; margin-bottom:20px; color:var(--accent-gold);">
+                Mockup Listing Creator</h3>
+              <div class="form-group">
+                <label>Listing Title</label>
+                <input type="text" id="sandbox-title" class="form-input"
+                  placeholder="e.g. Wild harvested old growth Assam wood chips">
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Listing Category</label>
+                  <select id="sandbox-type" class="form-select">
+                    <option value="product">Oud Wood / Oil Product</option>
+                    <option value="plant">Plantation / Tree / Sapling</option>
+                    <option value="service">Inoculation Service</option>
+                    <option value="by_product">By-product</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Species Declared</label>
+                  <input type="text" id="sandbox-species-suggest" class="form-input"
+                    placeholder="e.g. Aquilaria Malaccensis" list="species-list">
+                  <datalist id="species-list">
+                    <option value="Aquilaria malaccensis">
+                    </option>
+                    <option value="Aquilaria crassna">
+                    </option>
+                    <option value="Aquilaria sinensis">
+                    </option>
+                    <option value="Gyrinops ledermannii">
+                    </option>
+                  </datalist>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Listing Description</label>
+                <textarea id="sandbox-description" class="form-textarea" rows="4"
+                  placeholder="Enter listing details. Try typing forbidden keywords like 'wild-harvested', 'natural forest extraction', or 'smuggle' to trigger safety boundary flags..."></textarea>
+              </div>
+            </div>
+            <button class="btn btn-gold" id="btn-run-sandbox" style="width:100%; padding:14px;">Run AI Compliance
+              Scan</button>
+          </div>
+
+          <div class="sandbox-results-column" id="sandbox-results-panel">
+            <div style="text-align:center; color:var(--secondary); padding:4px;">
+              <span style="font-size:3rem; display:block; margin-bottom:16px;">🧬</span>
+              <h4 style="font-family:var(--font-display); color:var(--primary); font-size:1.15rem; margin-bottom:8px;">
+                Compliance Engine Ready</h4>
+              <p style="font-size:0.9rem; max-width:280px; margin:0 auto; line-height:1.5;">Enter listing parameters on
+                the left and click scan to test safety boundary rules.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Species Explorer Section -->
+      <section id="species" class="landing-section">
+        <div class="section-header">
+          <span class="section-tag">Botanical Registry</span>
+          <h2 class="section-title">CITES Appendix II Species Explorer</h2>
+          <p class="section-subtitle">
+            Explore the diverse species of the Aquilaria and Gyrinops genera protected under environmental legislation.
+          </p>
+        </div>
+
+        <div class="species-tab-container">
+          <div class="species-nav-list">
+            <button class="species-nav-item active" onclick="window.setExplorerSpecies('malaccensis')">
+              <span>Aquilaria Malaccensis</span> <span>🌿</span>
+            </button>
+            <button class="species-nav-item " onclick="window.setExplorerSpecies('crassna')">
+              <span>Aquilaria Crassna</span> <span>🌿</span>
+            </button>
+            <button class="species-nav-item " onclick="window.setExplorerSpecies('sinensis')">
+              <span>Aquilaria Sinensis</span> <span>🌿</span>
+            </button>
+            <button class="species-nav-item " onclick="window.setExplorerSpecies('gyrinops')">
+              <span>Gyrinops Ledermannii</span> <span>🌿</span>
+            </button>
+          </div>
+
+          <div class="species-content-card">
+            <div>
+              <h3
+                style="font-family:var(--font-display); font-size:1.6rem; color:var(--accent-gold); margin-bottom:6px;">
+                Aquilaria malaccensis</h3>
+              <p style="color:var(--secondary); font-size:0.95rem; font-style:italic; margin-bottom:20px;">Commonly
+                known as: <strong>Malayan Agarwood / Assam Oudh</strong></p>
+
+              <span class="trust-badge badge-gold" style="font-size:0.75rem;">🛡️ CITES: Appendix II Protected</span>
+
+              <div class="species-meta-grid">
+                <div>
+                  <div class="species-meta-label">Primary Region</div>
+                  <div class="species-meta-val">Northeast India (Assam), Malaysia, Indonesia, Thailand</div>
+                </div>
+                <div>
+                  <div class="species-meta-label">Odor/Aromatic Profile</div>
+                  <div class="species-meta-val">Heavy animalic leather notes, deeply woody, smoky sweetness,
+                    long-lasting rich profile.</div>
+                </div>
+                <div>
+                  <div class="species-meta-label">Wild Status</div>
+                  <div class="species-meta-val">Vulnerable (Wild populations critically depleted)</div>
+                </div>
+                <div>
+                  <div class="species-meta-label">Plantation Guidance</div>
+                  <div class="species-meta-val">Extensively cultivated in Northeast India. High resin yielding wood
+                    chips and essential oils.</div>
+                </div>
+              </div>
+            </div>
+            <div
+              style="border-top:1px solid rgba(255,255,255,0.05); padding-top:20px; font-size:0.85rem; color:var(--secondary); display:flex; align-items:center; gap:8px;">
+              <span>🚨 <strong>Note:</strong> All export trades require official state CITES certificates.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Directory Preview with Blur overlay -->
+      <section id="directory-preview" class="landing-section">
+        <div class="section-header">
+          <span class="section-tag">Marketplace Sneak-peek</span>
+          <h2 class="section-title">Verified Trading Directory</h2>
+          <p class="section-subtitle">
+            Preview our live listings directory. To unlock detailed quantities, prices, contact channels, and publish
+            listings, create an account.
+          </p>
+        </div>
+
+        <div style="position:relative;">
+          <div class="preview-grid">
+
+            <div class="preview-card-wrapper">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                <span class="role-tag"
+                  style="background-color:var(--accent-green); color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px; text-transform:uppercase;">Product</span>
+                <h3 style="font-size:1.15rem; font-weight:600; font-family:var(--font-display);">Assam Super King Oud
+                  Wood Chips</h3>
+              </div>
+              <p style="color:var(--secondary); font-size:0.85rem; margin-bottom:12px;">Owner: <strong>Royal Assam Oud
+                  Plantation</strong></p>
+              <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--secondary);">
+                <span>📦 Qty: <strong>15 kg</strong></span>
+                <span>🧬 Species: <strong>Aquilaria Malaccensis</strong></span>
+              </div>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--accent-gold); font-weight:700;">
+                Guidance Price: $2,800 / kg
+              </div>
+            </div>
+
+            <div class="preview-card-wrapper">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                <span class="role-tag"
+                  style="background-color:var(--accent-green); color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px; text-transform:uppercase;">Product</span>
+                <h3 style="font-size:1.15rem; font-weight:600; font-family:var(--font-display);">Organic Cambodi
+                  Essential Oil (Grade A)</h3>
+              </div>
+              <p style="color:var(--secondary); font-size:0.85rem; margin-bottom:12px;">Owner: <strong>Phnom Penh
+                  Distilleries Ltd</strong></p>
+              <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--secondary);">
+                <span>📦 Qty: <strong>5 Liters</strong></span>
+                <span>🧬 Species: <strong>Aquilaria Crassna</strong></span>
+              </div>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--accent-gold); font-weight:700;">
+                Guidance Price: $9,500 / Liter
+              </div>
+            </div>
+
+            <div class="preview-card-wrapper">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                <span class="role-tag"
+                  style="background-color:var(--accent-green); color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px; text-transform:uppercase;">Service</span>
+                <h3 style="font-size:1.15rem; font-weight:600; font-family:var(--font-display);">High-Yield Inoculation
+                  Service package</h3>
+              </div>
+              <p style="color:var(--secondary); font-size:0.85rem; margin-bottom:12px;">Owner: <strong>Bio-Forestry
+                  Specialists</strong></p>
+              <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--secondary);">
+                <span>📦 Qty: <strong>Up to 500 trees</strong></span>
+                <span>🧬 Species: <strong>Multi-species adapt</strong></span>
+              </div>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--accent-gold); font-weight:700;">
+                Guidance Price: Contact for Quote
+              </div>
+            </div>
+
+          </div>
+          <div class="preview-grid-overlay">
+            <div class="preview-overlay-box">
+              <span style="font-size:2.5rem; display:block; margin-bottom:12px;">🔒</span>
+              <h3
+                style="font-family:var(--font-display); font-size:1.4rem; color:var(--accent-gold); margin-bottom:12px;">
+                Verified Access Registry</h3>
+              <p style="color:var(--secondary); font-size:0.95rem; margin-bottom:20px; line-height:1.6;">
+                Due to strict Appendix II safety verification requirements, direct trade profiles and contact features
+                are locked to certified registry members.
+              </p>
+              <div style="display:flex; justify-content:center; gap:12px;">
+                <button class="btn btn-gold" onclick="window.navTo('auth')">Sign In / Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="landing-section">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about trading Agarwood on OudhTrade.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-card" onclick="window.toggleFaq(0)">
+            <div class="faq-question">
+              <span>What is OudhTrade and who is it for?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </div>
+            <p class="faq-answer" id="faq-ans-0">
+              OudhTrade is a global directory registry connecting certified buyers, sellers, nurseries, farmers, and
+              inoculation specialists dealing in Agarwood and Oud essential oils. It is built to facilitate legally
+              compliant negotiations.
+            </p>
+          </div>
+
+          <div class="faq-card" onclick="window.toggleFaq(1)">
+            <div class="faq-question">
+              <span>What is CITES Appendix II compliance?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </div>
+            <p class="faq-answer" id="faq-ans-1">
+              All species of the genus Aquilaria and Gyrinops (which produce Agarwood) are listed under CITES Appendix
+              II. This means their international trade is regulated to prevent endangerment, requiring exporters to
+              provide government-issued CITES certificates. OudhTrade uses AI to audit listings for compliance and asks
+              sellers to upload documentation.
+            </p>
+          </div>
+
+          <div class="faq-card" onclick="window.toggleFaq(2)">
+            <div class="faq-question">
+              <span>How does Symmetric Contact work?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </div>
+            <p class="faq-answer" id="faq-ans-2">
+              Symmetric Contact ensures that any email-verified platform member can directly open messaging threads and
+              initiate contact with any other member. Role switching is disabled in OudhTrade to maintain profile
+              credibility (a Buyer cannot switch to a Seller, and vice-versa).
+            </p>
+          </div>
+
+          <div class="faq-card" onclick="window.toggleFaq(3)">
+            <div class="faq-question">
+              <span>Are there transaction fees on OudhTrade?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </div>
+            <p class="faq-answer" id="faq-ans-3">
+              No. OudhTrade is a listing-only directory platform. We do not process payments or escrow. All
+              transactions, shipping, and CITES permit handling are negotiated directly between the buyers and sellers
+              via our integrated secure messaging system.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Luxury Footer -->
+      <footer class="luxury-footer">
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4 style="font-family:var(--font-display); font-size:1.3rem; margin-bottom:15px; color:#fff;">OudhTrade
+            </h4>
+            <p style="margin-bottom:20px; font-size:0.88rem;">
+              The premier global registry for Agarwood and Aquilaria trade partners. Empowering sustainable forestry
+              under environmental supervision.
+            </p>
+            <span style="font-size:0.75rem; color:var(--secondary);">© 2026 OudhTrade Global Registry. All rights
+              reserved.</span>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Nav</h4>
+            <ul>
+              <li><a href="#features">Platform Features</a></li>
+              <li><a href="#species">Species Database</a></li>
+              <li><a href="#cites-sandbox">AI Compliance Simulator</a></li>
+              <li><a href="#directory-preview">Directory Registry</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Compliance Guidelines</h4>
+            <p style="font-size:0.85rem; margin-bottom:12px;">
+              Trading wild-harvested Agarwood without local conservation permits violates the international CITES treaty
+              and environmental regulations.
+            </p>
+            <a href="https://cites.org/eng/app/appendices.php" target="_blank"
+              style="color:var(--accent-gold); font-size:0.85rem; text-decoration:underline;">CITES Appendix II
+              Reference Site</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Registered compliance records subject to audit check under statutory forestry control laws.</span>
+        </div>
+      </footer>
+    </div>
+  </div>
 
   <!-- Notification Banner Container -->
   <div id="toast-container"
@@ -31,6 +459,8 @@
   </div>
 
   <script type="module" src="/app.js"></script>
+
+
 </body>
 
 </html>
