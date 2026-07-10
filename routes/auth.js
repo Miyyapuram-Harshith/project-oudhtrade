@@ -3,36 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 import crypto from 'crypto';
 import pgDb from '../data/postgres.js';
 import mongoDb from '../data/mongodb.js';
+import jwt from 'jsonwebtoken';
+import { authenticateUser, authorizeRoles, sanitizeUser } from '../middleware/auth.js';
 
 const router = express.Router();
 
 function hashPassword(password) {
   return crypto.createHash('sha256').update(password).digest('hex');
-}
-
-// Helper: Authenticate user by Bearer token
-export function authenticateUser(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Unauthorized: Missing or invalid token' });
-  }
-  const token = authHeader.split(' ')[1];
-  const user = pgDb.users.find(u => u.id === token);
-  if (!user) {
-    return res.status(401).json({ error: 'Unauthorized: Session invalid' });
-  }
-  req.user = user;
-  next();
-}
-
-// Helper: Authorize roles guard
-export function authorizeRoles(...allowedRoles) {
-  return (req, res, next) => {
-    if (!req.user || !allowedRoles.includes(req.user.role)) {
-      return res.status(403).json({ error: `Forbidden: Access restricted to roles [${allowedRoles.join(', ')}]` });
-    }
-    next();
-  };
 }
 
 // Simulating OTP storage in memory (email -> code)
@@ -68,7 +45,9 @@ router.post('/signup', (req, res) => {
     expires: Date.now() + (10 * 60 * 1000) // 10 minutes
   });
 
-  console.log(`[AUTH-SIGNUP] Generated OTP ${otpCode} for email ${email}`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[AUTH-SIGNUP] Generated OTP ${otpCode} for email ${email}`);
+  }
 
   // Log audit
   pgDb.audit_logs.push({
@@ -165,10 +144,12 @@ router.post('/verify-email', (req, res) => {
   });
   pgDb.save();
 
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1d' });
+
   res.status(200).json({
     message: 'Email verified. Welcome to OudhTrade!',
-    token: userId,
-    user
+    token,
+    user: sanitizeUser(user)
   });
 });
 
@@ -199,10 +180,12 @@ router.post('/login', (req, res) => {
   });
   pgDb.save();
 
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+
   res.status(200).json({
     message: 'Login successful.',
-    token: user.id,
-    user
+    token,
+    user: sanitizeUser(user)
   });
 });
 
@@ -233,7 +216,7 @@ router.get('/profile', authenticateUser, (req, res) => {
   }
 
   res.status(200).json({
-    user: req.user,
+    user: sanitizeUser(req.user),
     companyTeam,
     companyInfo
   });
@@ -352,7 +335,7 @@ router.put('/profile', authenticateUser, (req, res) => {
 
   res.status(200).json({
     message: 'Profile updated successfully.',
-    user: req.user
+    user: sanitizeUser(req.user)
   });
 });
 
@@ -375,7 +358,7 @@ router.post('/verify-phone', authenticateUser, (req, res) => {
 
   res.status(200).json({
     message: 'Phone verified successfully.',
-    user: req.user
+    user: sanitizeUser(req.user)
   });
 });
 
@@ -472,7 +455,7 @@ router.post('/company/members', authenticateUser, authorizeRoles('company'), (re
     });
 
     pgDb.save();
-    return res.status(200).json({ message: 'Team member added successfully.', user: targetUser });
+    return res.status(200).json({ message: 'Team member added successfully.', user: sanitizeUser(targetUser) });
   } 
   
   if (action === 'remove') {

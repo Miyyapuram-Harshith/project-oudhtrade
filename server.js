@@ -2,6 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+import { configureSecurity } from './middleware/security.js';
+import { errorHandler } from './middleware/errorBoundary.js';
 
 import authRouter from './routes/auth.js';
 import listingsRouter from './routes/listings.js';
@@ -12,12 +16,15 @@ import coursesRouter from './routes/courses.js';
 import aiRouter from './routes/ai.js';
 import billingRouter from './routes/billing.js';
 
+dotenv.config();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+configureSecurity(app);
 app.use(cors());
 app.use(express.json());
 
@@ -46,13 +53,7 @@ app.get('*', (req, res) => {
 });
 
 // Centralized error boundary
-app.use((err, req, res, next) => {
-  console.error('[CORE GATEWAY EXCEPTION]', err);
-  res.status(500).json({
-    error: 'Gateway Server Error',
-    message: err.message || 'An unexpected error occurred.'
-  });
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`==================================================`);
